@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Club Deportivo</string>
-    <string name="titulo_login">LOGIN</string>
+    <string name="title_login">CLUB DEPORTIVO</string>
+    <string name="title_user">ingresar usuario</string>
+    <string name="title_pass">ingresar contraseña</string>
+    <string name="title_button_login">iniciar sesion</string>
 </resources>
