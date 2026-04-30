@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Club Deportivo</string>
+    <string name="titulo_login">LOGIN</string>
 </resources>
