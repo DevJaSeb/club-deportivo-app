@@ -4,4 +4,7 @@
     <string name="title_user">ingresar usuario</string>
     <string name="title_pass">ingresar contraseña</string>
     <string name="title_button_login">iniciar sesion</string>
+    <string name="descripcion_logo">logo club deportivo</string>
+    <string name="title_lbl_user">Usuario</string>
+    <string name="title_lbl_pass">Contraseña</string>
 </resources>
