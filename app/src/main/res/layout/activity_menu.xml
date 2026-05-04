@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:id="@+id/menu">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:paddingHorizontal="20dp"
+        android:layout_marginBottom="80dp">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="@string/desc_logo"
+            android:src="@drawable/ic_pelota_logo"
+            app:tint="@color/primary_purple">
+        </ImageView>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/txt_saludo_admin"
+            android:gravity="end"
+            android:layout_gravity="center_vertical"
+            android:textSize="24sp"
+            android:textStyle="bold">
+        </TextView>
+    </LinearLayout>
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_inscribir"
+        android:paddingVertical="15dp"
+        android:layout_marginBottom="20dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_pagar"
+        android:paddingVertical="15dp"
+        android:layout_marginBottom="20dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_vencimientos"
+        android:paddingVertical="15dp"
+        android:layout_marginBottom="20dp"/>
+
+</LinearLayout>
