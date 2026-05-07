@@ -1,216 +1,221 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
-    android:id="@+id/menu"
-    android:fontFamily="@font/roboto">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/vector_success"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="50dp"
-        android:contentDescription="@string/icn_exito"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto"
-        android:text="@string/msj_pago_exito"
-        android:textAlignment="center"
-        android:textSize="27sp"
-        android:layout_marginBottom="15dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto"
-        android:text="@string/importe_pagado"
-        android:textAlignment="center"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/monto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_medium"
-        android:text="$50.000,00"
-        android:textAlignment="center"
-        android:textSize="34sp" />
-
-    <TextView
-        android:id="@+id/nombreSocio"
-        android:layout_width="350dp"
-        android:layout_height="79dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/curved_border"
-        android:backgroundTint="@color/material_dynamic_tertiary90"
-        android:drawablePadding="15dp"
-        android:fontFamily="@font/roboto"
-        android:gravity="center_vertical"
-        android:lineSpacingExtra="8sp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:text="@string/nombre_socio"
-        android:textSize="18sp"
-        app:drawableLeftCompat="@drawable/outline_person_outline_24"
-        app:iconGravity="textStart" />
-
-    <TextView
-        style="@style/MyTextStyle"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:text="@string/detalle_del_pago"
-        android:textAlignment="textStart"
-        android:textStyle="bold" />
-
+    android:layout_height="match_parent">
     <LinearLayout
-        android:layout_width="350dp"
-        android:layout_height="45dp"
-        android:background="@drawable/curved_border"
-        android:backgroundTint="@color/material_dynamic_tertiary95"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp"
-        android:paddingRight="20dp"
-        android:paddingLeft="20dp">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:id="@+id/menu"
+        android:fontFamily="@font/roboto">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/vector_success"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="50dp"
+            android:contentDescription="@string/icn_exito"/>
 
         <TextView
-            style="@style/MyTextStyle"
-            android:layout_width="19dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:text="@string/msj_pago_exito"
+            android:textAlignment="center"
+            android:textSize="27sp"
+            android:layout_marginBottom="15dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:text="@string/importe_pagado"
+            android:textAlignment="center"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/monto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="$50.000,00"
+            android:textAlignment="center"
+            android:textSize="34sp" />
+
+        <TextView
+            android:id="@+id/nombreSocio"
+            android:layout_width="350dp"
+            android:layout_height="79dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/curved_border"
+            android:backgroundTint="@color/material_dynamic_tertiary90"
+            android:drawablePadding="15dp"
             android:fontFamily="@font/roboto"
             android:gravity="center_vertical"
-            android:text="@string/n_de_socio" />
+            android:lineSpacingExtra="8sp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/nombre_socio"
+            android:textSize="18sp"
+            app:drawableLeftCompat="@drawable/outline_person_outline_24"
+            app:iconGravity="textStart" />
 
         <TextView
-            android:id="@+id/nroSocio"
             style="@style/MyTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:fontFamily="@font/roboto"
-            android:gravity="center_vertical|end"
-            android:text="007" />
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="@string/detalle_del_pago"
+            android:textAlignment="textStart"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="45dp"
+            android:background="@drawable/curved_border"
+            android:backgroundTint="@color/material_dynamic_tertiary95"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp">
+
+            <TextView
+                style="@style/MyTextStyle"
+                android:layout_width="19dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto"
+                android:gravity="center_vertical"
+                android:text="@string/n_de_socio" />
+
+            <TextView
+                android:id="@+id/nroSocio"
+                style="@style/MyTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto"
+                android:gravity="center_vertical|end"
+                android:text="007" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="45dp"
+            android:background="@drawable/curved_border"
+            android:backgroundTint="@color/material_dynamic_tertiary95"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp">
+
+            <TextView
+                style="@style/MyTextStyle"
+                android:layout_width="31dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto"
+                android:gravity="center_vertical"
+                android:text="@string/vencimiento" />
+
+            <TextView
+                android:id="@+id/fechaVencimiento"
+                style="@style/MyTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto"
+                android:gravity="center_vertical|end"
+                android:text="07/06/2026" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="45dp"
+            android:background="@drawable/curved_border"
+            android:backgroundTint="@color/material_dynamic_tertiary95"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp">
+
+            <TextView
+                style="@style/MyTextStyle"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto"
+                android:gravity="center_vertical"
+                android:text="@string/forma_de_pago" />
+
+            <TextView
+                android:id="@+id/tipoDePago"
+                style="@style/MyTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto"
+                android:gravity="center_vertical|end"
+                android:text="Efectivo" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="45dp"
+            android:background="@drawable/curved_border"
+            android:backgroundTint="@color/material_dynamic_tertiary95"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp">
+
+            <TextView
+                style="@style/MyTextStyle"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto"
+                android:gravity="center_vertical"
+                android:text="@string/actividad" />
+
+            <TextView
+                android:id="@+id/actividad"
+                style="@style/MyTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto"
+                android:gravity="center_vertical|end"
+                android:text="Elongación" />
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:paddingVertical="15dp"
+            android:text="@string/btn_imprimir_comprobante"
+            android:layout_marginTop="50dp"
+            app:icon="@drawable/baseline_share_24"
+            app:iconGravity="textStart" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="155dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00FDFDFD"
+            android:text="@string/btn_finalizar"
+            android:textColor="#000000" />
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="350dp"
-        android:layout_height="45dp"
-        android:background="@drawable/curved_border"
-        android:backgroundTint="@color/material_dynamic_tertiary95"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp"
-        android:paddingRight="20dp"
-        android:paddingLeft="20dp">
-
-        <TextView
-            style="@style/MyTextStyle"
-            android:layout_width="31dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:fontFamily="@font/roboto"
-            android:gravity="center_vertical"
-            android:text="@string/vencimiento" />
-
-        <TextView
-            android:id="@+id/fechaVencimiento"
-            style="@style/MyTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:fontFamily="@font/roboto"
-            android:gravity="center_vertical|end"
-            android:text="07/06/2026" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="350dp"
-        android:layout_height="45dp"
-        android:background="@drawable/curved_border"
-        android:backgroundTint="@color/material_dynamic_tertiary95"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp"
-        android:paddingRight="20dp"
-        android:paddingLeft="20dp">
-
-        <TextView
-            style="@style/MyTextStyle"
-            android:layout_width="30dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:fontFamily="@font/roboto"
-            android:gravity="center_vertical"
-            android:text="@string/forma_de_pago" />
-
-        <TextView
-            android:id="@+id/tipoDePago"
-            style="@style/MyTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:fontFamily="@font/roboto"
-            android:gravity="center_vertical|end"
-            android:text="Efectivo" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="350dp"
-        android:layout_height="45dp"
-        android:background="@drawable/curved_border"
-        android:backgroundTint="@color/material_dynamic_tertiary95"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp"
-        android:paddingRight="20dp"
-        android:paddingLeft="20dp">
-
-        <TextView
-            style="@style/MyTextStyle"
-            android:layout_width="30dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:fontFamily="@font/roboto"
-            android:gravity="center_vertical"
-            android:text="@string/actividad" />
-
-        <TextView
-            android:id="@+id/actividad"
-            style="@style/MyTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:fontFamily="@font/roboto"
-            android:gravity="center_vertical|end"
-            android:text="Elongación" />
-
-    </LinearLayout>
-
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:paddingVertical="15dp"
-        android:text="@string/btn_imprimir_comprobante"
-        android:layout_marginTop="50dp"
-        app:icon="@drawable/baseline_share_24"
-        app:iconGravity="textStart" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="155dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#00FDFDFD"
-        android:text="@string/btn_finalizar"
-        android:textColor="#000000" />
-
-</LinearLayout>
+</ScrollView>

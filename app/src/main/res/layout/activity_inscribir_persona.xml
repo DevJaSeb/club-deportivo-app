@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/inscribirPersona"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp"
+            android:padding="20dp">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="140dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/baseline_arrow_back_24"
+                android:contentDescription="@string/flecha_de_regreso"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto"
+                android:text="@string/formulario_inscripcion"
+                android:textSize="25sp"
+                android:gravity="center_vertical"
+                />
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginTop="15dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="350dp"
+            android:id="@+id/lbl_nombre"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:hint="Ingresar Nombre"
+            app:placeholderText="Nombre"
+            android:textColorHint="@color/text_label"
+            app:hintTextColor="@color/primary_purple">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_nombre"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:autofillHints="Nombre"
+                android:inputType="text"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/lbl_apellido"
+            android:layout_marginBottom="30dp"
+            android:hint="Ingresar Apellido"
+            app:placeholderText="Apellido"
+            android:textColorHint="@color/text_label"
+            app:hintTextColor="@color/primary_purple">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_apellido"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:autofillHints="Apellido"
+                android:inputType="text"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/lbl_dni"
+            android:layout_marginBottom="30dp"
+            android:hint="@string/lbl_dni"
+            app:placeholderText="dni"
+            android:textColorHint="@color/text_label"
+            app:hintTextColor="@color/primary_purple">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_dni"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:autofillHints="DNI"
+                android:inputType="number"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/lbl_telefono"
+            android:layout_marginBottom="30dp"
+            android:hint="@string/lbl_telefono"
+            app:placeholderText="@string/telefono"
+            android:textColorHint="@color/text_label"
+            app:hintTextColor="@color/primary_purple">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_telefono"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:autofillHints="@string/telefono"
+                android:inputType="number"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/lbl_dirección"
+            android:layout_marginBottom="30dp"
+            android:hint="@string/lbl_direccion"
+            app:placeholderText="Dirección"
+            android:textColorHint="@color/text_label"
+            app:hintTextColor="@color/primary_purple">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_direccion"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:autofillHints="Dirección"
+                android:inputType="text"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/lbl_email"
+            android:layout_marginBottom="30dp"
+            android:hint="@string/ingresar_email"
+            app:placeholderText="Email"
+            android:textColorHint="@color/text_label"
+            app:hintTextColor="@color/primary_purple">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_email"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:autofillHints="Email"
+                android:inputType="text"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <CheckBox
+            android:id="@+id/cbo_aptoMedico"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:text="@string/apto_medico"
+            android:layout_marginBottom="5dp"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:text="@string/continuar"
+        android:layout_gravity="center"/>
+
+</LinearLayout>
+</ScrollView>

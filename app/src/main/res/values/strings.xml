@@ -17,7 +17,7 @@
     <string name="btn_pagar">Pagar Cuota</string>
     <string name="btn_vencimientos">Listar Vencimientos</string>
 
-    <!-- Pantalla: Comprobante -->
+    <!-- Pantalla: Comprobante y Carnet-->
     <string name="nombre_socio">Doe, John</string>
     <string name="msj_pago_exito">Pago realizado con éxito</string>
     <string name="icn_exito">Ícono de éxito</string>
@@ -33,4 +33,15 @@
     <string name="detalle_del_socio">Detalle del Socio:</string>
     <string name="dni">DNI</string>
     <string name="btn_imprimir_carnet">Imprimir Carnet</string>
+
+    <!-- Pantalla: Incribir Persona-->
+    <string name="formulario_inscripcion">Formulario de Inscripción</string>
+    <string name="flecha_de_regreso">Flecha de regreso</string>
+    <string name="continuar">Continuar</string>
+    <string name="ingresar_email">Ingresar Correo Electrónico</string>
+    <string name="apto_medico">Apto Médico</string>
+    <string name="lbl_direccion">Ingresar Dirección</string>
+    <string name="lbl_telefono">Ingresar Teléfono</string>
+    <string name="telefono">Teléfono</string>
+    <string name="lbl_dni">Ingresar DNI</string>
 </resources>
