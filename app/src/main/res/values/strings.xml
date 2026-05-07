@@ -44,4 +44,6 @@
     <string name="lbl_telefono">Ingresar Teléfono</string>
     <string name="telefono">Teléfono</string>
     <string name="lbl_dni">Ingresar DNI</string>
+    <string name="lbl_usuarios">Usuarios Activos</string>
+    <string name="btn_registrar_pago">Registrar Pago</string>
 </resources>

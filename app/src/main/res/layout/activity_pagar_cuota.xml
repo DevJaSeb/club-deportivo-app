@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/inscribirPersona"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp"
+            android:padding="20dp">
+
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="140dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/baseline_arrow_back_24"
+                android:contentDescription="@string/flecha_de_regreso"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto"
+                android:gravity="center_vertical"
+                android:text="Pagar Cuota"
+                android:textSize="25sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_marginTop="15dp">
+
+            <com.google.android.material.search.SearchBar
+                android:id="@+id/et_usuarios"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/lbl_usuarios"
+                android:pointerIcon="none"
+                app:backgroundTint="@color/material_dynamic_tertiary90"
+                app:navigationIcon="@drawable/baseline_format_list_bulleted_24"
+                app:menu="@menu/search_bar_menu"/>
+
+            <com.google.android.material.search.SearchView
+                android:id="@+id/searchView"
+                android:layout_width="350dp"
+                android:layout_height="match_parent"
+                android:hint="@string/lbl_usuarios" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:dividerThickness="1dp"
+                app:dividerColor="#D3D3D3"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="350dp"
+                android:id="@+id/lbl_fechaDePago"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:hint="Fecha de Pago"
+                app:placeholderText="dd/mm/yyyy"
+                android:textColorHint="@color/text_label"
+                app:hintTextColor="@color/primary_purple">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_fechaDePago"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="Fecha de Pago"
+                    android:inputType="date"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/lbl_monto"
+                android:layout_marginBottom="30dp"
+                android:hint="Ingresar Monto"
+                app:placeholderText="Monto"
+                android:textColorHint="@color/text_label"
+                app:hintTextColor="@color/primary_purple">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_monto"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="monto"
+                    android:inputType="number"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/lbl_formaDePago"
+                android:layout_marginBottom="30dp"
+                android:hint="@string/forma_de_pago"
+                app:placeholderText="@string/forma_de_pago"
+                android:textColorHint="@color/text_label"
+                app:hintTextColor="@color/primary_purple">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_formaDePago"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="@string/forma_de_pago"
+                    android:inputType="text"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/lbl_actividades"
+                android:layout_marginBottom="30dp"
+                android:hint="Selector de Actividades"
+                app:placeholderText="Actividades"
+                android:textColorHint="@color/text_label"
+                app:hintTextColor="@color/primary_purple">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_actividades"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="Selector de Actividades"
+                    android:inputType="text"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_registrar_pago"
+            android:layout_width="350dp"
+            android:layout_height="55dp"
+            android:text="@string/btn_registrar_pago"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+</ScrollView>
