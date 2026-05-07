@@ -8,4 +8,5 @@
     <color name="outline">#79747E</color>
     <color name="text_label">#49454F</color>
     <color name="background_input">#FEF7FF</color>
+    <color name="background_soft_pink">@color/material_dynamic_tertiary95</color>
 </resources>

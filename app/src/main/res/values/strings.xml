@@ -16,4 +16,21 @@
     <string name="btn_inscribir">Inscribir Persona</string>
     <string name="btn_pagar">Pagar Cuota</string>
     <string name="btn_vencimientos">Listar Vencimientos</string>
+
+    <!-- Pantalla: Comprobante -->
+    <string name="nombre_socio">Doe, John</string>
+    <string name="msj_pago_exito">Pago realizado con éxito</string>
+    <string name="icn_exito">Ícono de éxito</string>
+    <string name="importe_pagado">Importe pagado:</string>
+    <string name="detalle_del_pago">Detalle del Pago:</string>
+    <string name="n_de_socio">Nº de Socio</string>
+    <string name="vencimiento">Vencimiento</string>
+    <string name="forma_de_pago">Forma de Pago</string>
+    <string name="actividad">Actividad</string>
+    <string name="btn_imprimir_comprobante">Imprimir Comprobante</string>
+    <string name="btn_finalizar">Finalizar</string>
+    <string name="carnet_club_deportivo">Carnet Club Deportivo</string>
+    <string name="detalle_del_socio">Detalle del Socio:</string>
+    <string name="dni">DNI</string>
+    <string name="btn_imprimir_carnet">Imprimir Carnet</string>
 </resources>

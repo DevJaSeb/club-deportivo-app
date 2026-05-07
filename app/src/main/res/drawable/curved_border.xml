@@ -1,0 +1,12 @@
+<!-- res/drawable/curved_border.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Border color and width -->
+
+    <!-- Background color (use transparent if you only want the border) -->
+
+
+
+
+    <!-- Corner roundness -->
+    <corners android:radius="18dp" />
+</shape>
