@@ -16,4 +16,5 @@
     <string name="btn_inscribir">Inscribir Persona</string>
     <string name="btn_pagar">Pagar Cuota</string>
     <string name="btn_vencimientos">Listar Vencimientos</string>
+    <string name="btn_salir">Salir</string>
 </resources>

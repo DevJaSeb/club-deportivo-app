@@ -34,6 +34,7 @@
         </TextView>
     </LinearLayout>
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_inscribir"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:text="@string/btn_inscribir"
@@ -41,6 +42,7 @@
         android:layout_marginBottom="20dp"/>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_pagar_cuota"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:text="@string/btn_pagar"
@@ -48,10 +50,21 @@
         android:layout_marginBottom="20dp"/>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_vencimientos"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:text="@string/btn_vencimientos"
         android:paddingVertical="15dp"
         android:layout_marginBottom="20dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_salir"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_salir"
+        android:paddingVertical="15dp"
+        android:layout_marginBottom="20dp"
+        style="?attr/materialButtonOutlinedStyle"
+        android:textColor="@color/text_label"/>
 
 </LinearLayout>
