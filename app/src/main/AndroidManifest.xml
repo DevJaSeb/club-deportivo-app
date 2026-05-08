@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClubDeportivo">
         <activity
+            android:name=".completarInscripcionActivity"
+            android:exported="false" />
+        <activity
             android:name=".pagarCuotaActivity"
             android:exported="false" />
         <activity

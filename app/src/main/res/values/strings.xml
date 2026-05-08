@@ -16,6 +16,7 @@
     <string name="btn_inscribir">Inscribir Persona</string>
     <string name="btn_pagar">Pagar Cuota</string>
     <string name="btn_vencimientos">Listar Vencimientos</string>
+    <string name="btn_salir">Salir</string>
 
     <!-- Pantalla: Comprobante y Carnet-->
     <string name="nombre_socio">Doe, John</string>
@@ -46,4 +47,15 @@
     <string name="lbl_dni">Ingresar DNI</string>
     <string name="lbl_usuarios">Usuarios Activos</string>
     <string name="btn_registrar_pago">Registrar Pago</string>
+
+    <!-- Pantalla: Completar Inscripción -->
+
+    <string name="lbl_tipo_inscripcion">Tipo de Inscripción</string>
+    <string name="selector_de_actividades">Selector de Actividades</string>
+    <string name="ingresar_monto">Ingresar Monto</string>
+    <string name="fecha_de_pago">Fecha de Pago</string>
+    <string name="completar_inscripcion">Completar Inscripción</string>
+    <string name="no_socio">No Socio</string>
+    <string name="socio">Socio</string>
+
 </resources>
