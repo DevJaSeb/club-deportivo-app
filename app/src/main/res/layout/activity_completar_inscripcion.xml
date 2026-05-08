@@ -2,6 +2,7 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/inscribirPersona"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -21,7 +22,6 @@
             android:layout_marginTop="30dp"
             android:padding="20dp">
 
-
             <ImageView
                 android:id="@+id/imageView4"
                 android:layout_width="140dp"
@@ -36,7 +36,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/roboto"
                 android:gravity="center_vertical"
-                android:text="Pagar Cuota"
+                android:text="@string/completar_inscripcion"
                 android:textSize="25sp" />
         </LinearLayout>
 
@@ -47,21 +47,54 @@
             android:orientation="vertical"
             android:layout_marginTop="15dp">
 
-            <com.google.android.material.search.SearchBar
-                android:id="@+id/et_usuarios"
-                android:layout_width="350dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/lbl_usuarios"
-                android:pointerIcon="none"
-                app:backgroundTint="@color/material_dynamic_tertiary90"
-                app:navigationIcon="@drawable/baseline_format_list_bulleted_24"
-                app:menu="@menu/search_bar_menu"/>
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="10dp">
 
-            <com.google.android.material.search.SearchView
-                android:id="@+id/searchView"
-                android:layout_width="350dp"
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl_tipo_inscripcion"
+                    android:paddingHorizontal="12dp"/>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+            <RadioGroup
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="@string/lbl_usuarios" />
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <RadioButton
+                    android:id="@+id/rdo_socio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/socio"
+                    android:paddingEnd="20dp"
+                    tools:ignore="RtlSymmetry" />
+
+                <RadioButton
+                    android:id="@+id/rdo_noSocio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_socio"
+                    android:paddingEnd="20dp"
+                    tools:ignore="RtlSymmetry" />
+
+            </RadioGroup>
 
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
@@ -71,13 +104,15 @@
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="10dp"/>
 
+
+
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="350dp"
                 android:id="@+id/lbl_fechaDePago"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"
-                android:hint="Fecha de Pago"
+                android:hint="@string/fecha_de_pago"
                 app:placeholderText="dd/mm/yyyy"
                 android:textColorHint="@color/text_label"
                 app:hintTextColor="@color/primary_purple">
@@ -86,14 +121,10 @@
                     android:id="@+id/et_fechaDePago"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
-                    android:autofillHints="Fecha de Pago"
+                    android:autofillHints="@string/fecha_de_pago"
                     android:inputType="date"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -101,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/lbl_monto"
                 android:layout_marginBottom="30dp"
-                android:hint="Ingresar Monto"
+                android:hint="@string/ingresar_monto"
                 app:placeholderText="Monto"
                 android:textColorHint="@color/text_label"
                 app:hintTextColor="@color/primary_purple">
@@ -119,29 +150,9 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/lbl_formaDePago"
-                android:layout_marginBottom="30dp"
-                android:hint="@string/forma_de_pago"
-                app:placeholderText="@string/forma_de_pago"
-                android:textColorHint="@color/text_label"
-                app:hintTextColor="@color/primary_purple">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_formaDePago"
-                    android:layout_width="350dp"
-                    android:layout_height="wrap_content"
-                    android:autofillHints="@string/forma_de_pago"
-                    android:inputType="text"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"
                 android:id="@+id/lbl_actividades"
                 android:layout_marginBottom="30dp"
-                android:hint="Selector de Actividades"
+                android:hint="@string/selector_de_actividades"
                 app:placeholderText="Actividades"
                 android:textColorHint="@color/text_label"
                 app:hintTextColor="@color/primary_purple">
@@ -150,7 +161,7 @@
                     android:id="@+id/et_actividades"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
-                    android:autofillHints="Selector de Actividades"
+                    android:autofillHints="@string/selector_de_actividades"
                     android:inputType="text"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -159,11 +170,12 @@
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_registrar_pago"
+            android:id="@+id/btn_finalizar_inscripcion"
             android:layout_width="340dp"
             android:layout_height="wrap_content"
-            android:text="@string/btn_registrar_pago"
+            android:text="@string/btn_finalizar"
             android:paddingVertical="15dp"
+            android:layout_marginTop="40dp"
             android:layout_gravity="center"/>
 
     </LinearLayout>
