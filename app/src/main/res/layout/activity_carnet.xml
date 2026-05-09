@@ -9,6 +9,7 @@
     android:id="@+id/menu"
     android:fontFamily="@font/roboto">
 
+<!--    Imagen y título-->
     <LinearLayout
         android:layout_width="350dp"
         android:layout_height="166dp"
@@ -32,6 +33,7 @@
             android:textSize="24sp" />
     </LinearLayout>
 
+<!--    Nombre del Socio-->
     <TextView
         android:id="@+id/nombreSocio"
         android:layout_width="350dp"
@@ -51,6 +53,7 @@
         app:drawableLeftCompat="@drawable/outline_person_outline_24"
         app:iconGravity="textStart"/>
 
+<!--   Detalle del socio-->
     <TextView
         style="@style/MyTextStyle"
         android:layout_width="350dp"
@@ -60,6 +63,7 @@
         android:textAlignment="textStart"
         android:textStyle="bold" />
 
+<!--    fila DNI-->
     <LinearLayout
         android:layout_width="350dp"
         android:layout_height="45dp"
@@ -90,6 +94,7 @@
             android:text="20.421.934" />
     </LinearLayout>
 
+    <!--    fila Vencimiento-->
     <LinearLayout
         android:layout_width="350dp"
         android:layout_height="45dp"
@@ -120,6 +125,7 @@
             android:text="07/06/2026"/>
     </LinearLayout>
 
+    <!--    fila Nº de socio-->
     <LinearLayout
         android:layout_width="350dp"
         android:layout_height="45dp"
@@ -150,7 +156,9 @@
             android:text="007" />
     </LinearLayout>
 
+    <!--    Botón imprimir-->
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_imprimir_carnet"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -160,8 +168,9 @@
         app:icon="@drawable/baseline_share_24"
         app:iconGravity="textStart" />
 
+    <!--    Botón Finalizar-->
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_finalizar"
         android:layout_width="155dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#00FDFDFD"

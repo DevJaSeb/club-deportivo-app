@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center_horizontal"
         android:id="@+id/menu"
         android:fontFamily="@font/roboto">
 
+        <!--    Imagen de éxito -->
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -20,6 +21,7 @@
             android:layout_marginTop="50dp"
             android:contentDescription="@string/icn_exito"/>
 
+        <!--    Mensaje de éxito  -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,6 +39,7 @@
             android:textAlignment="center"
             android:textSize="18sp" />
 
+        <!--    Importe pagado / monto  -->
         <TextView
             android:id="@+id/monto"
             android:layout_width="match_parent"
@@ -46,6 +49,7 @@
             android:textAlignment="center"
             android:textSize="34sp" />
 
+        <!--    Nombre del socio / no socio  -->
         <TextView
             android:id="@+id/nombreSocio"
             android:layout_width="350dp"
@@ -65,6 +69,7 @@
             app:drawableLeftCompat="@drawable/outline_person_outline_24"
             app:iconGravity="textStart" />
 
+        <!--    Detalle del pago  -->
         <TextView
             style="@style/MyTextStyle"
             android:layout_width="350dp"
@@ -74,6 +79,7 @@
             android:textAlignment="textStart"
             android:textStyle="bold" />
 
+        <!--    Fila Nº de Socio/NoSocio  -->
         <LinearLayout
             android:layout_width="350dp"
             android:layout_height="45dp"
@@ -84,6 +90,7 @@
             android:paddingRight="20dp"
             android:paddingLeft="20dp">
 
+            <!--    Socio o No-Socio  -->
             <TextView
                 style="@style/MyTextStyle"
                 android:layout_width="19dp"
@@ -93,6 +100,7 @@
                 android:gravity="center_vertical"
                 android:text="@string/n_de_socio" />
 
+            <!--    Número de socio / ID  -->
             <TextView
                 android:id="@+id/nroSocio"
                 style="@style/MyTextStyle"
@@ -105,6 +113,7 @@
 
         </LinearLayout>
 
+        <!--    Fila de Vencimiento  -->
         <LinearLayout
             android:layout_width="350dp"
             android:layout_height="45dp"
@@ -124,6 +133,7 @@
                 android:gravity="center_vertical"
                 android:text="@string/vencimiento" />
 
+            <!--    Fecha de vencimiento  -->
             <TextView
                 android:id="@+id/fechaVencimiento"
                 style="@style/MyTextStyle"
@@ -136,6 +146,7 @@
 
         </LinearLayout>
 
+        <!--    Fila de Forma de Pago  -->
         <LinearLayout
             android:layout_width="350dp"
             android:layout_height="45dp"
@@ -155,6 +166,7 @@
                 android:gravity="center_vertical"
                 android:text="@string/forma_de_pago" />
 
+            <!--    dato forma de pago  -->
             <TextView
                 android:id="@+id/tipoDePago"
                 style="@style/MyTextStyle"
@@ -167,6 +179,7 @@
 
         </LinearLayout>
 
+        <!--    Fila Actividad  -->
         <LinearLayout
             android:layout_width="350dp"
             android:layout_height="45dp"
@@ -186,6 +199,7 @@
                 android:gravity="center_vertical"
                 android:text="@string/actividad" />
 
+            <!--   dato actividad  -->
             <TextView
                 android:id="@+id/actividad"
                 style="@style/MyTextStyle"
@@ -198,7 +212,9 @@
 
         </LinearLayout>
 
+        <!--    Botón Imprimir Comprobante  -->
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_imprimir_comprobante"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
@@ -208,12 +224,13 @@
             app:icon="@drawable/baseline_share_24"
             app:iconGravity="textStart" />
 
+        <!--    Botón Finalizar(NO SOCIO Y SOCIO)//Ver Carnet(SOCIO NUEVO)  -->
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btn_carnet"
             android:layout_width="155dp"
             android:layout_height="wrap_content"
             android:backgroundTint="#00FDFDFD"
-            android:text="@string/btn_finalizar"
+            android:text="@string/ver_carnet"
             android:textColor="#000000" />
 
     </LinearLayout>

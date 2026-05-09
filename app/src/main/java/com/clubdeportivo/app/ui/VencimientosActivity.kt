@@ -24,7 +24,7 @@ class VencimientosActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vencimientos)
 
-        val flechaVolver = findViewById<ImageView>(R.id.imageView4)
+        val flechaVolver = findViewById<ImageView>(R.id.btn_volver)
         val cbFiltroDia = findViewById<CheckBox>(R.id.cb_filtro_dia)
         val layoutVacio = findViewById<LinearLayout>(R.id.layout_vacio)
         val rvVencimientos = findViewById<RecyclerView>(R.id.rv_vencimientos)
