@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+    <!-- Header: flecha de regreso y título -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/baseline_arrow_back_24"
+            android:contentDescription="@string/flecha_de_regreso"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/roboto"
+            android:text="@string/vencimientos"
+            android:textSize="25sp"
+            android:gravity="center_vertical"
+            />
+    </LinearLayout>
+
+    <!-- Divisor con texto "Fecha a Consultar" -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp">
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="12dp"
+            android:text="@string/fecha_a_consultar"
+            android:textColor="#757575"
+            android:textStyle="bold" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <!-- Input de fecha con icono de calendario -->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        app:startIconDrawable="@drawable/baseline_calendar_month_24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_fecha_consulta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/dd_mm_yyyy"
+            android:focusable="false"
+            android:inputType="none" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- CheckBox para el filtro -->
+    <CheckBox
+        android:id="@+id/cb_filtro_dia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:text="@string/solo_vencimientos_de_ese_dia"
+        android:textColor="#000000"
+        android:textStyle="bold" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- ESTADO A: La lista de usuarios -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_vencimientos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="20dp"
+            tools:listitem="@layout/item_vencimiento" />
+
+        <!-- ESTADO B: Pantalla Vacía (oculto por defecto) -->
+        <LinearLayout
+            android:id="@+id/layout_vacio"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="32dp"
+            android:visibility="gone">
+
+            <!-- Lupa con tamaño forzado a 155dp -->
+            <ImageView
+                android:layout_width="155dp"
+                android:layout_height="155dp"
+                android:layout_marginBottom="24dp"
+                app:srcCompat="@drawable/baseline_search_24"
+                app:tint="#6A627B"
+                android:contentDescription="@string/sin_resultados" />
+
+            <!-- Mensaje de texto -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/no_hay_coincidencias_para_esta_busqueda"
+                android:textColor="#6A627B"
+                android:textSize="22sp" />
+        </LinearLayout>
+
+    </FrameLayout>
+
+</LinearLayout>
