@@ -1,18 +1,24 @@
-package com.clubdeportivo.app
+package com.clubdeportivo.app.ui
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.clubdeportivo.app.R
 
 class MenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
+
+        val btnVencimientos = findViewById<Button>(R.id.btn_vencimientos)
         val btnSalir = findViewById<Button>(R.id.btn_salir)
+
+        btnVencimientos.setOnClickListener {
+            val intent = Intent(this, VencimientosActivity::class.java)
+            startActivity(intent)
+        }
+
         btnSalir.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             //FLAGS PARA CERRAR SESION CUANDO HAYA VALIDACION DE DATOS
