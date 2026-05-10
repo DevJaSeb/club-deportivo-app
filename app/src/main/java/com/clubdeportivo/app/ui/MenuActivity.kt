@@ -24,7 +24,7 @@ class MenuActivity : AppCompatActivity() {
         btnSalir.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             //FLAGS PARA CERRAR SESION CUANDO HAYA VALIDACION DE DATOS
-            //intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
 
