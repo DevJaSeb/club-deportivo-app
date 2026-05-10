@@ -54,7 +54,7 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="350dp"
-            android:id="@+id/lbl_nombre"
+            android:id="@+id/til_nombre"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:hint="@string/ingresar_nombre"
@@ -76,7 +76,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:id="@+id/lbl_apellido"
+            android:id="@+id/til_apellido"
             android:layout_marginBottom="30dp"
             android:hint="@string/ingresar_apellido"
             app:placeholderText="Apellido"
@@ -97,7 +97,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:id="@+id/lbl_dni"
+            android:id="@+id/til_dni"
             android:layout_marginBottom="30dp"
             android:hint="@string/lbl_dni"
             app:placeholderText="dni"
@@ -118,7 +118,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:id="@+id/lbl_telefono"
+            android:id="@+id/til_telefono"
             android:layout_marginBottom="30dp"
             android:hint="@string/lbl_telefono"
             app:placeholderText="@string/telefono"
@@ -139,7 +139,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:id="@+id/lbl_dirección"
+            android:id="@+id/til_dirección"
             android:layout_marginBottom="30dp"
             android:hint="@string/lbl_direccion"
             app:placeholderText="Dirección"
@@ -160,10 +160,10 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:id="@+id/lbl_email"
+            android:id="@+id/til_email"
             android:layout_marginBottom="30dp"
             android:hint="@string/ingresar_email"
-            app:placeholderText="Email"
+            app:placeholderText="ejemplo@email.com"
             android:textColorHint="@color/text_label"
             app:hintTextColor="@color/primary_purple">
 
@@ -172,13 +172,13 @@
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:autofillHints="Email"
-                android:inputType="text"
+                android:inputType="textEmailAddress"
                 android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--        checkbox: Apto médico      -->
         <CheckBox
-            android:id="@+id/cbo_aptoMedico"
+            android:id="@+id/cb_aptoMedico"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:text="@string/apto_medico"
