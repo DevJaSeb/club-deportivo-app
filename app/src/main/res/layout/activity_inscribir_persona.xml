@@ -122,6 +122,8 @@
             android:layout_marginBottom="30dp"
             android:hint="@string/lbl_telefono"
             app:placeholderText="@string/telefono"
+            app:startIconDrawable="@drawable/ic_phone"
+            app:helperText="Ingresalo con cód. de área, sin 0 ni 15."
             android:textColorHint="@color/text_label"
             app:hintTextColor="@color/primary_purple">
 
@@ -143,6 +145,7 @@
             android:layout_marginBottom="30dp"
             android:hint="@string/lbl_direccion"
             app:placeholderText="Dirección"
+            app:startIconDrawable="@drawable/baseline_house_24"
             android:textColorHint="@color/text_label"
             app:hintTextColor="@color/primary_purple">
 
@@ -164,6 +167,7 @@
             android:layout_marginBottom="30dp"
             android:hint="@string/ingresar_email"
             app:placeholderText="ejemplo@email.com"
+            app:startIconDrawable="@drawable/baseline_email_24"
             android:textColorHint="@color/text_label"
             app:hintTextColor="@color/primary_purple">
 

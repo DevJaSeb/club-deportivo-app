@@ -61,6 +61,9 @@
     <string name="socio">Socio</string>
     <string name="ver_carnet">Ver Carnet</string>
 
+    <!-- Pantalla: Pagar Cuota -->
+    <string name="pagar_cuota">Pagar Cuota</string>
+
     <!-- Pantalla: Vencimientos -->
     <string name="vencimientos">Vencimientos</string>
     <string name="fecha_a_consultar">Fecha a Consultar</string>
