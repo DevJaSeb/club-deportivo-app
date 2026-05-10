@@ -34,6 +34,7 @@
     <string name="detalle_del_socio">Detalle del Socio:</string>
     <string name="dni">DNI</string>
     <string name="btn_imprimir_carnet">Imprimir Carnet</string>
+    <string name="icono_de_pelota">ícono de pelota</string>
 
     <!-- Pantalla: Incribir Persona-->
     <string name="formulario_inscripcion">Formulario de Inscripción</string>
@@ -68,6 +69,7 @@
     <string name="no_hay_coincidencias_para_esta_busqueda">No hay coincidencias para esta búsqueda</string>
     <string name="sin_resultados">Sin resultados</string>
     <string name="icono_socio">Icono Socio</string>
+
 
 
 </resources>

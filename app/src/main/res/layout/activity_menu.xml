@@ -35,7 +35,7 @@
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_inscribir"
+        android:id="@+id/btn_inscribir_persona"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"

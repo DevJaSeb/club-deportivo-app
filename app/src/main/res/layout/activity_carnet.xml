@@ -22,7 +22,8 @@
             android:layout_height="103dp"
             android:layout_margin="7dp"
             android:layout_marginTop="10dp"
-            app:srcCompat="@drawable/ic_pelota_logo" />
+            app:srcCompat="@drawable/ic_pelota_logo"
+            android:contentDescription="@string/icono_de_pelota"/>
 
         <TextView
             android:id="@+id/textView2"

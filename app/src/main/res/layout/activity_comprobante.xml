@@ -179,7 +179,7 @@
 
         </LinearLayout>
 
-        <!--    Fila Actividad  -->
+        <!--    Fila Actividad  (visible solo con NO SOCIO)-->
         <LinearLayout
             android:layout_width="350dp"
             android:layout_height="45dp"
@@ -188,7 +188,8 @@
             android:orientation="horizontal"
             android:layout_marginBottom="10dp"
             android:paddingRight="20dp"
-            android:paddingLeft="20dp">
+            android:paddingLeft="20dp"
+            android:visibility="gone">
 
             <TextView
                 style="@style/MyTextStyle"
@@ -224,7 +225,7 @@
             app:icon="@drawable/baseline_share_24"
             app:iconGravity="textStart" />
 
-        <!--    Botón Finalizar(NO SOCIO Y SOCIO)//Ver Carnet(SOCIO NUEVO)  -->
+        <!--    Botón Ver Carnet(SOCIO NUEVO)  -->
         <Button
             android:id="@+id/btn_carnet"
             android:layout_width="155dp"
@@ -232,6 +233,16 @@
             android:backgroundTint="#00FDFDFD"
             android:text="@string/ver_carnet"
             android:textColor="#000000" />
+
+        <!--    Botón Finalizar (SOCIO y NO SOCIO)  -->
+        <Button
+            android:id="@+id/btn_finalizar"
+            android:layout_width="155dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00FDFDFD"
+            android:text="@string/btn_finalizar"
+            android:textColor="#000000"
+            android:visibility="gone" />
 
     </LinearLayout>
 
