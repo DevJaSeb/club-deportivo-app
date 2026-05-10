@@ -53,7 +53,8 @@
             android:layout_height="wrap_content"
             android:autofillHints="username"
             android:inputType="text"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textColor="@color/black"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <!--    TIL y ET de Contraseña   -->
@@ -66,7 +67,8 @@
         android:hint="@string/hint_password"
         app:placeholderText="@string/lbl_password"
         android:textColorHint="@color/text_label"
-        app:hintTextColor="@color/primary_purple">
+        app:hintTextColor="@color/primary_purple"
+        app:endIconMode="password_toggle">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_pass"
@@ -74,7 +76,8 @@
             android:layout_height="wrap_content"
             android:autofillHints="password"
             android:inputType="textPassword"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textColor="@color/black"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <!--    Botón Iniciar Sesión   -->

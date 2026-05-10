@@ -25,6 +25,7 @@
     <string name="importe_pagado">Importe pagado:</string>
     <string name="detalle_del_pago">Detalle del Pago:</string>
     <string name="n_de_socio">Nº de Socio</string>
+    <string name="n_de_no_socio">Nº de No-Socio</string>
     <string name="vencimiento">Vencimiento</string>
     <string name="forma_de_pago">Forma de Pago</string>
     <string name="actividad">Actividad</string>

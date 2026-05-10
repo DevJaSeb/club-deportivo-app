@@ -18,7 +18,9 @@
             android:exported="false" />
         <activity
             android:name=".ui.InscribirPersonaActivity"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
+        <!--Fix para que el teclado no tape el campo en InscribirPersona. se puede mejorar.-->
         <activity
             android:name=".ui.CarnetActivity"
             android:exported="false" />
