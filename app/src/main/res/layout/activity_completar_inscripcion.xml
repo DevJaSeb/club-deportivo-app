@@ -118,6 +118,7 @@
                 android:layout_marginBottom="30dp"
                 android:hint="@string/fecha_de_pago"
                 app:placeholderText="dd/mm/yyyy"
+                app:startIconDrawable="@drawable/baseline_calendar_month_24"
                 android:textColorHint="@color/text_label"
                 app:hintTextColor="@color/primary_purple">
 
@@ -139,6 +140,7 @@
                 android:layout_marginBottom="30dp"
                 android:hint="@string/ingresar_monto"
                 app:placeholderText="Monto"
+                app:startIconDrawable="@drawable/baseline_attach_money_24"
                 android:textColorHint="@color/text_label"
                 app:hintTextColor="@color/primary_purple">
 
@@ -160,6 +162,7 @@
                 android:layout_marginBottom="30dp"
                 android:hint="@string/forma_de_pago"
                 app:placeholderText="@string/forma_de_pago"
+                app:startIconDrawable="@drawable/baseline_payments_24"
                 android:textColorHint="@color/text_label"
                 app:hintTextColor="@color/primary_purple">
 
@@ -182,6 +185,7 @@
                 android:hint="@string/selector_de_actividades"
                 android:textColorHint="@color/text_label"
                 app:hintTextColor="@color/primary_purple"
+                app:startIconDrawable="@drawable/baseline_sports_martial_arts_24"
                 app:placeholderText="Actividades">
 
                 <com.google.android.material.textfield.TextInputEditText
