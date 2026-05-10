@@ -1,4 +1,5 @@
 package com.clubdeportivo.app.adapters
+import android.annotation.SuppressLint
 import android.view.*
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -29,6 +30,7 @@ class PagarCuotaAdapter(
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun actualizarLista(nuevaLista: List<String>) {
         lista.clear()
         lista.addAll(nuevaLista)

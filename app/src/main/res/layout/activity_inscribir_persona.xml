@@ -203,7 +203,8 @@
         android:layout_height="55dp"
         android:text="@string/continuar"
         android:layout_gravity="center"
-        android:layout_marginBottom="80dp"/>
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="15dp"/>
 
 </LinearLayout>
 </ScrollView>

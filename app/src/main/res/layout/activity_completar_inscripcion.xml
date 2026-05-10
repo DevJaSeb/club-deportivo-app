@@ -156,12 +156,12 @@
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!--        Input: Forma de Pago      -->
+            <!--        Menú Vertical: Forma de Pago      -->
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:id="@+id/til_forma_de_pago"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/til_formaDePago"
                 android:layout_marginBottom="30dp"
                 android:hint="@string/forma_de_pago"
                 app:placeholderText="@string/forma_de_pago"
@@ -169,13 +169,13 @@
                 android:textColorHint="@color/text_label"
                 app:hintTextColor="@color/primary_purple">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_formaDePago"
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/et_forma_de_pago"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
-                    android:autofillHints="@string/forma_de_pago"
-                    android:inputType="text"
-                    android:textSize="16sp" />
+                    android:inputType="none"
+                    android:textSize="16sp"
+                    tools:ignore="LabelFor,SpeakableTextPresentCheck"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <!--        Menú Vertical: Selector de Actividades      -->
