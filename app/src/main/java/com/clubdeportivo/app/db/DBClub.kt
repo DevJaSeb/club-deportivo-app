@@ -240,14 +240,5 @@ class DBClub (context: Context) : SQLiteOpenHelper(context, "ClubDeportivo.db", 
         return id
     }
 
-    fun contarActividades(): Int {
-        val db = readableDatabase
-        val cursor = db.rawQuery("SELECT COUNT(*) FROM actividad", null)
-        cursor.moveToFirst()
-        val count = cursor.getInt(0)
-        cursor.close()
-        db.close()
-        return count
-    }
 
 }
