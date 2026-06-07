@@ -29,7 +29,7 @@ class CompletarInscripcionActivity : AppCompatActivity() {
         db = DBClub(this)
 
         val rgTipoSocio = findViewById<RadioGroup>(R.id.rg_tipo_socio)
-        val tilActividades = findViewById<TextInputLayout>(R.id.til_actividades)  // ← sin .toString()
+        val tilActividades = findViewById<TextInputLayout>(R.id.til_actividades)
         val etActividades = findViewById<MaterialAutoCompleteTextView>(R.id.et_actividades)
         val etFormaDePago = findViewById<MaterialAutoCompleteTextView>(R.id.et_forma_de_pago)
         val etFecha = findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.et_fechaDePago)

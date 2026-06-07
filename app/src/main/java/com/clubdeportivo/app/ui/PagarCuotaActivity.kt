@@ -15,15 +15,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.clubdeportivo.app.enums.FormaDePago
 import com.clubdeportivo.app.R
 import com.clubdeportivo.app.adapters.PagarCuotaAdapter
+import com.clubdeportivo.app.db.DBClub
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
+import com.google.android.material.textfield.TextInputLayout
 
 class PagarCuotaActivity : AppCompatActivity() {
+    private lateinit var db: DBClub
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pagar_cuota)
 
+        db = DBClub(this)
+
         val flechaVolver = findViewById<ImageView>(R.id.btn_volver)
         val btnRegistrarPago = findViewById<Button>(R.id.btn_registrar_pago)
+        val tilActividades = findViewById<TextInputLayout>(R.id.til_actividades)
         val etActividades = findViewById<MaterialAutoCompleteTextView>(R.id.et_actividades)
         val etFormaDePago = findViewById<MaterialAutoCompleteTextView>(R.id.et_forma_de_pago)
         // Searchbar Usuarios Activos
@@ -38,6 +45,7 @@ class PagarCuotaActivity : AppCompatActivity() {
         // VALORES DE PRUEBA TEMPORALES (borrar)
         val listaPrueba = listOf("Juan Santos", "Pedro Arias", "María Marta", "Javier Ojeda")
 
+        // adaptador searchbar
         val adapterPagarCuota = PagarCuotaAdapter(listaPrueba.toMutableList()) { seleccionado ->
             searchBar.setText(seleccionado)
             searchView.hide()
@@ -58,6 +66,11 @@ class PagarCuotaActivity : AppCompatActivity() {
 
             override fun afterTextChanged(s: Editable?) {}
         })
+
+        // Cargar actividades desde DB
+        val actividades = db.obtenerActividades()
+        val adapterActividades = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, actividades)
+        etActividades.setAdapter(adapterActividades)
 
         // Cierra la pantalla
         flechaVolver.setOnClickListener {
