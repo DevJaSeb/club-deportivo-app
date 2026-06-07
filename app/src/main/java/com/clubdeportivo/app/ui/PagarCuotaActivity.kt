@@ -30,8 +30,7 @@ class PagarCuotaActivity : AppCompatActivity() {
         val searchBar = findViewById<SearchBar>(R.id.sb_usuarios)
         val searchView = findViewById<SearchView>(R.id.sv_usuarios)
         val recycler = findViewById<RecyclerView>(R.id.rv_usuarios)
-        // Enums
-        //val actividades = Actividades.entries.map { it.texto }
+        // Enum forma de pago
         val formaDePago = FormaDePago.entries.map { it.texto }
 
 
@@ -70,15 +69,6 @@ class PagarCuotaActivity : AppCompatActivity() {
             val intent = Intent(this, ComprobanteActivity::class.java)
             startActivity(intent)
         }
-
-        // Menú vertical de actividades
-//        val adapterActividades = ArrayAdapter(
-//            this,
-//            android.R.layout.simple_dropdown_item_1line,
-//            actividades
-//        )
-
-        //etActividades.setAdapter(adapterActividades)
 
         // Menú vertical de Forma de pago
         val adapterFormaDePago = ArrayAdapter(

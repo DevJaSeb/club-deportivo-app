@@ -55,7 +55,9 @@ class RegistrarUsuarioActivity : AppCompatActivity() {
             val exito = db.registrarUsuario(usuario, pass)
             if (exito) {
                 Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, MenuActivity::class.java))
+                var intent = Intent(this, MenuActivity::class.java)
+                intent.putExtra("USUARIO", usuario)
+                startActivity(intent)
                 finish() // cierra esta actividad para no volver atrás
             } else {
                 Toast.makeText(this, "El nombre de usuario ya existe", Toast.LENGTH_SHORT).show()
