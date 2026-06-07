@@ -27,12 +27,20 @@
             android:id="@+id/tv_item_nombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#212121"
+            android:textColor="#212121" android:textStyle="bold"
             android:textSize="16sp" />
 
         <!-- ID -->
         <TextView
             android:id="@+id/tv_item_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#757575"
+            android:textSize="14sp" />
+
+        <!-- Fecha de vencimiento -->
+        <TextView
+            android:id="@+id/tv_item_fecha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#757575"

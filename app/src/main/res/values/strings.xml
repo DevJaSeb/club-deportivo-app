@@ -68,7 +68,7 @@
     <!-- Pantalla: Vencimientos -->
     <string name="vencimientos">Vencimientos</string>
     <string name="fecha_a_consultar">Fecha a Consultar</string>
-    <string name="dd_mm_yyyy">dd/mm/yyyy</string>
+    <string name="d_m_yyyy">d/m/yyyy</string>
     <string name="solo_vencimientos_de_ese_dia">Solo vencimientos de ese día</string>
     <string name="no_hay_coincidencias_para_esta_busqueda">No hay coincidencias para esta búsqueda</string>
     <string name="sin_resultados">Sin resultados</string>

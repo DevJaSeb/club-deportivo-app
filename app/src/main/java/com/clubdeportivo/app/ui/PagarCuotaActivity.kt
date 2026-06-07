@@ -1,24 +1,23 @@
 package com.clubdeportivo.app.ui
 
-import android.text.Editable
-import android.text.TextWatcher
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.ArrayAdapter
-import android.widget.ImageView
 import android.widget.Button
-import android.widget.TextView
+import android.widget.ImageView
 import android.widget.Toast
-import com.google.android.material.search.SearchBar
-import com.google.android.material.search.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.clubdeportivo.app.enums.FormaDePago
 import com.clubdeportivo.app.R
 import com.clubdeportivo.app.adapters.PagarCuotaAdapter
-import com.clubdeportivo.app.adapters.UsuarioActivo
 import com.clubdeportivo.app.db.DBClub
+import com.clubdeportivo.app.enums.FormaDePago
+import com.clubdeportivo.app.models.UsuarioActivo
+import com.google.android.material.search.SearchBar
+import com.google.android.material.search.SearchView
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputLayout
 

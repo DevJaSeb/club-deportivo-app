@@ -5,7 +5,10 @@ import android.content.Context
 import android.database.sqlite.SQLiteConstraintException
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import com.clubdeportivo.app.adapters.UsuarioActivo
+import com.clubdeportivo.app.models.UsuarioActivo
+import com.clubdeportivo.app.models.Vencimiento
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class DBClub (context: Context) : SQLiteOpenHelper(context, "ClubDeportivo.db", null, 1) {
 
@@ -267,5 +270,56 @@ class DBClub (context: Context) : SQLiteOpenHelper(context, "ClubDeportivo.db", 
         return lista
     }
 
+    fun obtenerVencimientos(fechaFiltro: String, filtrarPorDiaExacto: Boolean): List<Vencimiento> {
+        val db = this.readableDatabase
+        val lista = mutableListOf<Vencimiento>()
 
+        val sql = "SELECT s.idSocio, s.fechaVencimiento, p.apellido, p.nombre FROM socio s INNER JOIN persona p ON s.idPersona = p.idPersona"
+        val cursor = db.rawQuery(sql, null)
+
+        val formato = SimpleDateFormat("d/M/yyyy", Locale.getDefault())
+        val fechaSeleccionada = formato.parse(fechaFiltro)
+
+        if (cursor.moveToFirst()) {
+            do {
+                val idSocio = cursor.getInt(0)
+                val fechaVencStr = cursor.getString(1) ?: ""
+                val apellido = cursor.getString(2)
+                val nombre = cursor.getString(3)
+
+                try {
+                    val fechaVencimiento = formato.parse(fechaVencStr)
+
+                    if (fechaVencimiento != null && fechaSeleccionada != null) {
+
+                        var agregarALista = false
+
+                        if (filtrarPorDiaExacto) {
+                            // Las fechas deben ser exactamente idénticas
+                            if (fechaVencimiento.compareTo(fechaSeleccionada) == 0) {
+                                agregarALista = true
+                            }
+                        } else {
+                            // El vencimiento debe ser menor o igual a la fecha del calendario
+                            if (fechaVencimiento <= fechaSeleccionada) {
+                                agregarALista = true
+                            }
+                        }
+
+                        if (agregarALista) {
+                            val nombreCompleto = "$apellido, $nombre"
+                            val idFormateado = "ID: ${idSocio.toString().padStart(3, '0')}"
+                            lista.add(Vencimiento(nombreCompleto, idFormateado, fechaVencStr))
+                        }
+                    }
+                } catch (e: Exception) { }
+
+            } while (cursor.moveToNext())
+        }
+
+        cursor.close()
+        db.close()
+
+        return lista
+    }
 }

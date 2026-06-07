@@ -14,6 +14,7 @@ class VencimientosAdapter(private val vencimientos: List<Vencimiento>) :
     class VencimientoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvNombre: TextView = view.findViewById(R.id.tv_item_nombre)
         val tvId: TextView = view.findViewById(R.id.tv_item_id)
+        val tvFecha: TextView = view.findViewById(R.id.tv_item_fecha)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VencimientoViewHolder {
@@ -26,6 +27,7 @@ class VencimientosAdapter(private val vencimientos: List<Vencimiento>) :
         val vencimiento = vencimientos[position]
         holder.tvNombre.text = vencimiento.nombre
         holder.tvId.text = vencimiento.idSocio
+        holder.tvFecha.text = vencimiento.fecha
     }
 
     override fun getItemCount() = vencimientos.size

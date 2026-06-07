@@ -75,7 +75,7 @@
             android:id="@+id/et_fecha_consulta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/dd_mm_yyyy"
+            android:hint="@string/d_m_yyyy"
             android:focusable="false"
             android:inputType="none" />
     </com.google.android.material.textfield.TextInputLayout>

@@ -7,12 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.clubdeportivo.app.R   // ← asegúrate de tener el layout item_usuario.xml
+import com.clubdeportivo.app.models.UsuarioActivo
 
-data class UsuarioActivo(
-    val nombre: String,
-    val dni: String,
-    val tipo: String   // "Socio" o "No Socio"
-)
 class PagarCuotaAdapter(
     private val lista: MutableList<UsuarioActivo>,
     private val onClick: (UsuarioActivo) -> Unit   // ahora pasa el objeto completo
