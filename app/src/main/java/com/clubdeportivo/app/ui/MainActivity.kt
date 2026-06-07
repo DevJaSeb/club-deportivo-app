@@ -16,8 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val dbHelper = DBClub(this)
-        val db = dbHelper.readableDatabase
+        val db = DBClub(this)
 
         val tilUsuario = findViewById<TextInputLayout>(R.id.lbl_usuario)
         val tilPass = findViewById<TextInputLayout>(R.id.lbl_pass)
@@ -58,7 +57,7 @@ class MainActivity : AppCompatActivity() {
             // TODO: poner autenticaciones reales cuando agreguemos bases de datos.
 
             // Chequear credenciales con la base de datos
-            val esValido = dbHelper.verificarLogin(usuario, pass)
+            val esValido = db.verificarLogin(usuario, pass)
             if (esValido) {
                 Toast.makeText(this, "Login exitoso", Toast.LENGTH_SHORT).show()
                 // Iniciar actividad principal después de login

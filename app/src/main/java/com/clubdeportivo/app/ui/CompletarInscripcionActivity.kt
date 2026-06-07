@@ -7,7 +7,6 @@ import android.widget.ImageView
 import android.widget.Button
 import android.widget.RadioGroup
 import android.app.DatePickerDialog
-import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
 import java.util.Calendar
@@ -53,11 +52,6 @@ class CompletarInscripcionActivity : AppCompatActivity() {
         val actividades = db.obtenerActividades()
         val adapterActividades = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, actividades)
         etActividades.setAdapter(adapterActividades)
-
-        // test
-        // Prueba: ver cuántas actividades hay en la BD
-        val count = db.contarActividades()  // necesitas agregar esta función
-        Toast.makeText(this, "Actividades: $actividades", Toast.LENGTH_LONG).show()
 
         // Adapter para forma de pago
         val adapterFormaPago = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, formaDePago)
