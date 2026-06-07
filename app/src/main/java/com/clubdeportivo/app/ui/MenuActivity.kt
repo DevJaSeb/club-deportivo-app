@@ -3,6 +3,7 @@ package com.clubdeportivo.app.ui
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.clubdeportivo.app.R
 
@@ -15,6 +16,10 @@ class MenuActivity : AppCompatActivity() {
         val btnSalir = findViewById<Button>(R.id.btn_salir)
         val btnPagarCuota = findViewById<Button>(R.id.btn_pagar_cuota)
         val btnInscribirPersona = findViewById<Button>(R.id.btn_inscribir_persona)
+        val tvSaludo = findViewById<TextView>(R.id.tv_saludo)
+        // Saludo personalizado
+        val usuario = intent.getStringExtra("USUARIO")
+        tvSaludo.text = "Hola, ${usuario ?: "Invitado"}"
 
         btnVencimientos.setOnClickListener {
             val intent = Intent(this, VencimientosActivity::class.java)

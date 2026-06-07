@@ -4,10 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.clubdeportivo.app.R
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.clubdeportivo.app.db.DBClub
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +25,9 @@ class MainActivity : AppCompatActivity() {
         val btnIniciarSesion = findViewById<Button>(R.id.btn_login)
 
         val btnRegistrarUsuario = findViewById<TextView>(R.id.btn_registrar_usuario)
+        // Base de datos
+        val db = DBClub(this)
+
 
         btnIniciarSesion.setOnClickListener {
 
@@ -45,14 +50,27 @@ class MainActivity : AppCompatActivity() {
                 tilPass.error = null
             }
 
-            if (!valido) return@setOnClickListener
-
-            val intent = Intent(this, MenuActivity::class.java)
-            startActivity(intent)
+            if (!valido) {
+                Toast.makeText(this, "Completa todos los campos.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
             // TODO: poner autenticaciones reales cuando agreguemos bases de datos.
-        }
 
+            // Chequear credenciales con la base de datos
+            val esValido = db.verificarLogin(usuario, pass)
+            if (esValido) {
+                Toast.makeText(this, "Login exitoso", Toast.LENGTH_SHORT).show()
+                // Iniciar actividad principal después de login
+                val intent = Intent(this, MenuActivity::class.java)
+                intent.putExtra("USUARIO", usuario)
+                startActivity(intent)
+                finish()
+            } else {
+                Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+            }
+        }
+        // Botón crear nuevo usuario
         btnRegistrarUsuario.setOnClickListener {
             val intent = Intent(this, RegistrarUsuarioActivity::class.java)
             startActivity(intent)

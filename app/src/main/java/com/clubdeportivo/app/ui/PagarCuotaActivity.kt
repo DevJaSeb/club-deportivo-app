@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.clubdeportivo.app.enums.FormaDePago
-import com.clubdeportivo.app.enums.Actividades
 import com.clubdeportivo.app.R
 import com.clubdeportivo.app.adapters.PagarCuotaAdapter
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
@@ -32,7 +31,7 @@ class PagarCuotaActivity : AppCompatActivity() {
         val searchView = findViewById<SearchView>(R.id.sv_usuarios)
         val recycler = findViewById<RecyclerView>(R.id.rv_usuarios)
         // Enums
-        val actividades = Actividades.entries.map { it.texto }
+        //val actividades = Actividades.entries.map { it.texto }
         val formaDePago = FormaDePago.entries.map { it.texto }
 
 
@@ -73,13 +72,13 @@ class PagarCuotaActivity : AppCompatActivity() {
         }
 
         // Menú vertical de actividades
-        val adapterActividades = ArrayAdapter(
-            this,
-            android.R.layout.simple_dropdown_item_1line,
-            actividades
-        )
+//        val adapterActividades = ArrayAdapter(
+//            this,
+//            android.R.layout.simple_dropdown_item_1line,
+//            actividades
+//        )
 
-        etActividades.setAdapter(adapterActividades)
+        //etActividades.setAdapter(adapterActividades)
 
         // Menú vertical de Forma de pago
         val adapterFormaDePago = ArrayAdapter(

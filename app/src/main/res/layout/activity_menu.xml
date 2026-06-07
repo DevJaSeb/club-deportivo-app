@@ -23,6 +23,7 @@
             app:tint="@color/primary_purple">
         </ImageView>
         <TextView
+            android:id="@+id/tv_saludo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
