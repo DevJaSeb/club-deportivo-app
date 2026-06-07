@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.clubdeportivo.app.R
 import com.clubdeportivo.app.adapters.VencimientosAdapter
-import com.clubdeportivo.app.repository.SocioRepository
+import com.clubdeportivo.app.db.DBClub
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.textfield.TextInputEditText
 import java.text.SimpleDateFormat
@@ -21,6 +21,7 @@ import java.util.TimeZone
 
 class VencimientosActivity: AppCompatActivity() {
 
+    private lateinit var db: DBClub
     private lateinit var rvVencimientos: RecyclerView
     private lateinit var layoutVacio: LinearLayout
     private lateinit var etFechaConsulta: TextInputEditText
@@ -29,6 +30,8 @@ class VencimientosActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vencimientos)
+
+        db = DBClub(this)
 
         val flechaVolver = findViewById<ImageView>(R.id.btn_volver)
         cbFiltroDia = findViewById(R.id.cb_filtro_dia)
@@ -46,7 +49,7 @@ class VencimientosActivity: AppCompatActivity() {
 
         // Establecer fecha de hoy por defecto
         val fechaDeHoy = Calendar.getInstance().time
-        val formatoVisual = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val formatoVisual = SimpleDateFormat("d/M/yyyy", Locale.getDefault())
         etFechaConsulta.setText(formatoVisual.format(fechaDeHoy))
 
         actualizarLista()
@@ -62,8 +65,8 @@ class VencimientosActivity: AppCompatActivity() {
             val picker = builder.build()
 
             picker.addOnPositiveButtonClickListener { selection ->
-                // La fecha viene en milisegundos (Long). Hay que darle formato de texto (dd/MM/yyyy)
-                val formato = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                // La fecha viene en milisegundos (Long). Hay que darle formato de texto (d/M/yyyy)
+                val formato = SimpleDateFormat("d/M/yyyy", Locale.getDefault())
 
                 // MaterialDatePicker trabaja en UTC, así que forzamos la zona horaria
                 // para evitar que por el cambio de horario devuelva un día antes.
@@ -83,8 +86,7 @@ class VencimientosActivity: AppCompatActivity() {
         val fechaSeleccionada = etFechaConsulta.text.toString()
         val filtrarPorDia = cbFiltroDia.isChecked
 
-        val repository = SocioRepository(this)
-        val resultados = repository.obtenerVencimientos(fechaSeleccionada, filtrarPorDia)
+        val resultados = db.obtenerVencimientos(fechaSeleccionada, filtrarPorDia)
 
         if (resultados.isEmpty()) {
             rvVencimientos.visibility = View.GONE
