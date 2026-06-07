@@ -10,7 +10,6 @@ import com.clubdeportivo.app.R
 import com.clubdeportivo.app.db.DBClub
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import com.clubdeportivo.app.db.DBClub
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,9 +28,6 @@ class MainActivity : AppCompatActivity() {
         val btnIniciarSesion = findViewById<Button>(R.id.btn_login)
 
         val btnRegistrarUsuario = findViewById<TextView>(R.id.btn_registrar_usuario)
-        // Base de datos
-        val db = DBClub(this)
-
 
         btnIniciarSesion.setOnClickListener {
 
@@ -62,7 +58,7 @@ class MainActivity : AppCompatActivity() {
             // TODO: poner autenticaciones reales cuando agreguemos bases de datos.
 
             // Chequear credenciales con la base de datos
-            val esValido = db.verificarLogin(usuario, pass)
+            val esValido = dbHelper.verificarLogin(usuario, pass)
             if (esValido) {
                 Toast.makeText(this, "Login exitoso", Toast.LENGTH_SHORT).show()
                 // Iniciar actividad principal después de login

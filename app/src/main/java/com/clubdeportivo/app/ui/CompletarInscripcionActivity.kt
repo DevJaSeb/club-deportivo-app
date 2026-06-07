@@ -152,6 +152,24 @@ class CompletarInscripcionActivity : AppCompatActivity() {
                     } else {
                         Toast.makeText(this, "Error al registrar Socio", Toast.LENGTH_SHORT).show()
                     }
+
+                    // Insertar cuota Mensual
+                    val idCuotaMensual = db.insertarCuotaMensual(
+                        idSocio = idSocio,
+                        monto = monto,
+                        fechaPago = fecha,
+                        fechaVencimiento = fechaVencimiento,
+                        formaPago = formaPagoText
+                    )
+                    if (idCuotaMensual != -1L) {
+                        Toast.makeText(this, "Socio registrado", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this, MenuActivity::class.java))
+                        finish()
+                    } else {
+                        Toast.makeText(this, "Error al registrar cuota mensual", Toast.LENGTH_SHORT).show()
+                    }
+
+
                 }
                 R.id.rdo_noSocio -> {
                     // Validar actividad
