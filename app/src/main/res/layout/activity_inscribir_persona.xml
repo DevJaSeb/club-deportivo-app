@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-<!--        Flecha Volver y Título      -->
+        <!--        Flecha Volver y Título      -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="80dp"
@@ -41,8 +41,11 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/roboto"
                 android:text="@string/formulario_inscripcion"
-                android:textSize="25sp"
                 android:gravity="center_vertical"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="12sp"
+                app:autoSizeMaxTextSize="25sp"
+                app:autoSizeStepGranularity="1sp"
                 />
         </LinearLayout>
 

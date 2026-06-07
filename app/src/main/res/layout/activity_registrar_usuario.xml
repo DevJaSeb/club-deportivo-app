@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/registrarUsuario"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
+    android:paddingBottom="80dp"
+    android:clipToPadding="false">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!--        Flecha Volver y Título      -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp"
+            android:padding="20dp">
+
+            <!--        Flecha Volver      -->
+            <ImageView
+                android:id="@+id/btn_volver"
+                android:layout_width="94dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="@string/flecha_de_regreso"
+                app:srcCompat="@drawable/baseline_arrow_back_24" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto"
+                android:text="Registrar Usuario"
+                android:gravity="center_vertical"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="12sp"
+                app:autoSizeMaxTextSize="25sp"
+                app:autoSizeStepGranularity="1sp"
+                />
+        </LinearLayout>
+
+        <!--        Formulario     -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_marginTop="15dp">
+
+            <!--        Input: Usuario      -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="350dp"
+                android:id="@+id/til_usuario"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:hint="Ingresar Usuario"
+                app:placeholderText="Usuario"
+                android:textColorHint="@color/text_label"
+                app:hintTextColor="@color/primary_purple">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_usuario"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:autofillHints="Usuario"
+                android:inputType="text"
+                android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--    TIL y ET de Contraseña   -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/til_pass"
+                android:layout_marginBottom="30dp"
+                android:hint="@string/hint_password"
+                app:placeholderText="@string/lbl_password"
+                android:textColorHint="@color/text_label"
+                app:hintTextColor="@color/primary_purple"
+                app:endIconMode="password_toggle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_pass"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="password"
+                    android:inputType="textPassword"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--    TIL y ET de Repetir Contraseña   -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/til_repetir_contraseña"
+                android:layout_marginBottom="30dp"
+                android:hint="Repetir Contraseña"
+                app:placeholderText="@string/lbl_password"
+                android:textColorHint="@color/text_label"
+                app:hintTextColor="@color/primary_purple"
+                app:endIconMode="password_toggle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_repetir_pass"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="password"
+                    android:inputType="textPassword"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <!--        Botón Aceptar     -->
+        <Button
+            android:id="@+id/btn_registrar_usuario"
+            android:layout_width="350dp"
+            android:layout_height="55dp"
+            android:text="Registrar"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="15dp"/>
+    </LinearLayout>
+
+</ScrollView>

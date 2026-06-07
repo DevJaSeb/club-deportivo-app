@@ -4,18 +4,23 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import com.clubdeportivo.app.R
+import com.clubdeportivo.app.db.DBClub
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
 class InscribirPersonaActivity : AppCompatActivity() {
+    private lateinit var db: DBClub
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         WindowCompat.setDecorFitsSystemWindows(window, true)
         setContentView(R.layout.activity_inscribir_persona)
+
+        db = DBClub(this)
 
         val flechaVolver = findViewById<ImageView>(R.id.btn_volver)
         val btnContinuar = findViewById<Button>(R.id.btn_completar_inscripcion)
@@ -71,6 +76,10 @@ class InscribirPersonaActivity : AppCompatActivity() {
                 tilDni.error = "El DNI debe tener 8 dígitos"
                 valido = false
             } else{
+                if (db.existePersonaPorDni(dni)) {
+                    Toast.makeText(this, "Persona ya registrada.", Toast.LENGTH_SHORT).show()
+                    valido = false
+                }
                 tilDni.error = null
             }
 
@@ -120,5 +129,9 @@ class InscribirPersonaActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        db.close() // cerrar la BD
     }
 }

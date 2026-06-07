@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClubDeportivo">
         <activity
+            android:name=".ui.RegistrarUsuarioActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.CompletarInscripcionActivity"
             android:exported="false" />
         <activity
@@ -18,9 +21,8 @@
             android:exported="false" />
         <activity
             android:name=".ui.InscribirPersonaActivity"
-            android:windowSoftInputMode="adjustResize"
-            android:exported="false" />
-        <!--Fix para que el teclado no tape el campo en InscribirPersona. se puede mejorar.-->
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" /> <!-- Fix para que el teclado no tape el campo en InscribirPersona. se puede mejorar. -->
         <activity
             android:name=".ui.CarnetActivity"
             android:exported="false" />

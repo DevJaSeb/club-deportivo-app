@@ -4,9 +4,8 @@
     <color name="text_white">#FFFFFFFF</color>
     <color name="text_black">#1D1B20</color>
     <color name="primary_purple">#65558F</color>
-    <color name="background">#FEF7FF</color>
+    <color name="background">#FFFFFFFF</color>
     <color name="outline">#79747E</color>
     <color name="text_label">#49454F</color>
     <color name="background_input">#FEF7FF</color>
-    <color name="background_soft_pink">@color/material_dynamic_tertiary95</color>
 </resources>
