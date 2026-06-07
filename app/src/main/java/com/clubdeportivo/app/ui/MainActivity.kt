@@ -3,6 +3,7 @@ package com.clubdeportivo.app.ui
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.clubdeportivo.app.R
 import com.google.android.material.textfield.TextInputEditText
@@ -20,6 +21,8 @@ class MainActivity : AppCompatActivity() {
         val etPass = findViewById<TextInputEditText>(R.id.et_pass)
 
         val btnIniciarSesion = findViewById<Button>(R.id.btn_login)
+
+        val btnRegistrarUsuario = findViewById<TextView>(R.id.btn_registrar_usuario)
 
         btnIniciarSesion.setOnClickListener {
 
@@ -48,6 +51,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
 
             // TODO: poner autenticaciones reales cuando agreguemos bases de datos.
+        }
+
+        btnRegistrarUsuario.setOnClickListener {
+            val intent = Intent(this, RegistrarUsuarioActivity::class.java)
+            startActivity(intent)
         }
     }
 }
