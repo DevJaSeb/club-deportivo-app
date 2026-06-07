@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteConstraintException
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.clubdeportivo.app.adapters.UsuarioActivo
 
 class DBClub (context: Context) : SQLiteOpenHelper(context, "ClubDeportivo.db", null, 1) {
 
@@ -238,6 +239,32 @@ class DBClub (context: Context) : SQLiteOpenHelper(context, "ClubDeportivo.db", 
         val id = db.insert("cuotadiaria", null, values)
         db.close()
         return id
+    }
+
+    // Lista todos los socios y no socios, junto con documento y tipo de membresía
+    // Para el searchbar de Pagar Cuota
+    fun obtenerTodosLosMiembros(): List<UsuarioActivo> {
+        val db = readableDatabase
+        val query = """
+        SELECT persona.nombre || ' ' || persona.apellido AS nombre_completo, persona.dni, 'Socio' AS tipo
+        FROM socio 
+        INNER JOIN persona ON socio.idPersona = persona.idPersona
+        UNION
+        SELECT persona.nombre || ' ' || persona.apellido AS nombre_completo, persona.dni, 'No Socio' AS tipo
+        FROM nosocio 
+        INNER JOIN persona ON nosocio.idPersona = persona.idPersona
+    """
+        val cursor = db.rawQuery(query, null)
+        val lista = mutableListOf<UsuarioActivo>()
+        while (cursor.moveToNext()) {
+            val nombre = cursor.getString(0)
+            val dni = cursor.getString(1)
+            val tipo = cursor.getString(2)
+            lista.add(UsuarioActivo(nombre, dni, tipo))
+        }
+        cursor.close()
+        db.close()
+        return lista
     }
 
 

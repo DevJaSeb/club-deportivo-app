@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import com.google.android.material.search.SearchBar
 import com.google.android.material.search.SearchView
 import androidx.appcompat.app.AppCompatActivity
@@ -46,20 +47,27 @@ class PagarCuotaActivity : AppCompatActivity() {
 
 
         searchView.setupWithSearchBar(searchBar)
-        // VALORES DE PRUEBA TEMPORALES (borrar)
-        val listaPrueba = listOf(
-            UsuarioActivo("Juan Pérez", "12345678"),
-            UsuarioActivo("Ana Gómez", "87654321"),
-            UsuarioActivo("Carlos Ruiz", "11223344")
-        )
-        listaUsuariosCompleta.addAll(listaPrueba)
+        // PEDIDO A BASE DE DATOS DE TODOS LOS MIEMBROS + dni + tipo de miembro
+        val listaMiembros = db.obtenerTodosLosMiembros()
+        listaUsuariosCompleta.clear()
+        listaUsuariosCompleta.addAll(listaMiembros)
+
+        if (listaMiembros.isEmpty()) {
+            Toast.makeText(this, "No hay miembros registrados", Toast.LENGTH_SHORT).show()
+        }
 
         // adaptador searchbar
-        adapterPagarCuota = PagarCuotaAdapter(listaPrueba.toMutableList()) { seleccionado ->
-            // Convertir el objeto a string para mostrar en la SearchBar
-            searchBar.setText("${seleccionado.nombre} (DNI: ${seleccionado.dni})")
+        adapterPagarCuota = PagarCuotaAdapter(listaMiembros.toMutableList()) { seleccionado ->
+            // Mostrar nombre, DNI y tipo en la SearchBar (opcional)
+            searchBar.setText("${seleccionado.nombre} (${seleccionado.tipo}) - DNI: ${seleccionado.dni}")
             searchView.hide()
         }
+
+        // Configurar SearchView
+        searchView.setupWithSearchBar(searchBar)
+
+        recycler.adapter = adapterPagarCuota
+        recycler.layoutManager = LinearLayoutManager(this)
 
         recycler.adapter = adapterPagarCuota
         recycler.layoutManager = LinearLayoutManager(this)
@@ -67,7 +75,6 @@ class PagarCuotaActivity : AppCompatActivity() {
         // Filtrado en vivo - usuarios activos
         searchView.editText?.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val texto = s?.toString() ?: ""
                 val filtrada = if (texto.isEmpty()) {
@@ -75,12 +82,12 @@ class PagarCuotaActivity : AppCompatActivity() {
                 } else {
                     listaUsuariosCompleta.filter { usuario ->
                         usuario.nombre.contains(texto, ignoreCase = true) ||
-                                usuario.dni.contains(texto, ignoreCase = true)
+                                usuario.dni.contains(texto, ignoreCase = true) ||
+                                usuario.tipo.contains(texto, ignoreCase = true)
                     }
                 }
                 adapterPagarCuota.actualizarLista(filtrada)
             }
-
             override fun afterTextChanged(s: Editable?) {}
         })
 

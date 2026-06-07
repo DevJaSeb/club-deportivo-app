@@ -10,7 +10,8 @@ import com.clubdeportivo.app.R   // ← asegúrate de tener el layout item_usuar
 
 data class UsuarioActivo(
     val nombre: String,
-    val dni: String
+    val dni: String,
+    val tipo: String   // "Socio" o "No Socio"
 )
 class PagarCuotaAdapter(
     private val lista: MutableList<UsuarioActivo>,
@@ -20,6 +21,7 @@ class PagarCuotaAdapter(
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvNombre: TextView = view.findViewById(R.id.tv_nombre)
         val tvDni: TextView = view.findViewById(R.id.tv_dni)
+        val tvTipo: TextView = view.findViewById(R.id.tv_tipo)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -34,7 +36,7 @@ class PagarCuotaAdapter(
         val usuario = lista[position]
         holder.tvNombre.text = usuario.nombre
         holder.tvDni.text = "DNI: ${usuario.dni}"
-
+        holder.tvTipo.text = usuario.tipo   // "Socio" o "No Socio"
         holder.itemView.setOnClickListener {
             onClick(usuario)
         }
