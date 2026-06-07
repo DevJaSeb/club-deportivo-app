@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteConstraintException
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-class DBClub (context: Context) : SQLiteOpenHelper(context, "ClubDeportivo1.db", null, 1) {
+class DBClub (context: Context) : SQLiteOpenHelper(context, "ClubDeportivo.db", null, 1) {
 
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL(CREATE_USUARIO_TABLE)
@@ -20,7 +20,7 @@ class DBClub (context: Context) : SQLiteOpenHelper(context, "ClubDeportivo1.db",
         // Insertamos datos de prueba para poder hacer login
         db?.execSQL("INSERT INTO usuario (usuario, clave) VALUES ('admin', 'admin123')")
 
-        // Actividades
+        // Cargar Actividades para el selector de actividades
         val actividadesIniciales = listOf("Natación", "Elongación", "Musculación", "Artes Marciales", "Tenis", "Yoga")
         for (act in actividadesIniciales) {
             db?.execSQL("INSERT INTO actividad (nombreActividad) VALUES ('$act')")
