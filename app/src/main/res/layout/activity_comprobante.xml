@@ -41,7 +41,7 @@
 
         <!--    Importe pagado / monto  -->
         <TextView
-            android:id="@+id/monto"
+            android:id="@+id/tv_monto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_medium"
@@ -51,7 +51,7 @@
 
         <!--    Nombre del socio / no socio  -->
         <TextView
-            android:id="@+id/nombreSocio"
+            android:id="@+id/tv_nombre_apellido"
             android:layout_width="350dp"
             android:layout_height="79dp"
             android:layout_marginTop="15dp"
@@ -92,6 +92,7 @@
 
             <!--    Socio o No-Socio  -->
             <TextView
+                android:id="@+id/tv_tipo_socio"
                 style="@style/MyTextStyle"
                 android:layout_width="19dp"
                 android:layout_height="match_parent"
@@ -102,7 +103,7 @@
 
             <!--    Número de socio / ID  -->
             <TextView
-                android:id="@+id/nroSocio"
+                android:id="@+id/tv_id"
                 style="@style/MyTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -125,6 +126,7 @@
             android:paddingLeft="20dp">
 
             <TextView
+                android:id="@+id/tv_fecha"
                 style="@style/MyTextStyle"
                 android:layout_width="31dp"
                 android:layout_height="match_parent"
@@ -135,7 +137,7 @@
 
             <!--    Fecha de vencimiento  -->
             <TextView
-                android:id="@+id/fechaVencimiento"
+                android:id="@+id/tv_vencimiento"
                 style="@style/MyTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -168,7 +170,7 @@
 
             <!--    dato forma de pago  -->
             <TextView
-                android:id="@+id/tipoDePago"
+                android:id="@+id/tv_forma_pago"
                 style="@style/MyTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -181,6 +183,7 @@
 
         <!--    Fila Actividad  (visible solo con NO SOCIO)-->
         <LinearLayout
+            android:id="@+id/actividad_contenedor"
             android:layout_width="350dp"
             android:layout_height="45dp"
             android:background="@drawable/curved_border"
@@ -202,7 +205,7 @@
 
             <!--   dato actividad  -->
             <TextView
-                android:id="@+id/actividad"
+                android:id="@+id/tv_actividad"
                 style="@style/MyTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
