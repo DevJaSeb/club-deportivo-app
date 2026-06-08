@@ -168,10 +168,6 @@ class CompletarInscripcionActivity : AppCompatActivity() {
                             putExtra("formaDePago", formaPagoText)
                             putExtra("monto", monto)
                         }
-                        Log.d("DEBUG_INTENT", "nombre = '$nombre', apellido = '$apellido'," +
-                                "dni = '$dni'" +
-                                "idSocio = '$idSocio', vencimiento = '$fechaVencimiento', formaDePago = '$etFormaDePago.text', monto = '$monto'" )
-
 
                         startActivity(intent)
                         finish()

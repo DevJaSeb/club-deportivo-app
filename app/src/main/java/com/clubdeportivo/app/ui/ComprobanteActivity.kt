@@ -41,11 +41,6 @@ class ComprobanteActivity : AppCompatActivity() {
         val actividadContenedor = findViewById<LinearLayout>(R.id.actividad_contenedor)
         val tvFecha = findViewById<TextView>(R.id.tv_fecha)
 
-        Log.d("DEBUG_INTENT", "idNoSocio = '$idNoSocio', idSocio = '$idSocio'")
-        Log.d("DEBUG_INTENT", "nombre = '$nombre', apellido = '$apellido'," +
-                "dni = '$dni'" +
-                "idSocio = '$idSocio', vencimiento = '$vencimiento', formaDePago = '$formaPago', monto = '$monto'" )
-
         // Si es No Socio, aparecen las actividades y tvs correspondientes
         if (idNoSocio != "") {
             actividadContenedor.visibility = View.VISIBLE
