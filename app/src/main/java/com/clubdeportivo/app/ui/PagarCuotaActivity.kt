@@ -1,9 +1,12 @@
 package com.clubdeportivo.app.ui
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ImageView
@@ -20,11 +23,15 @@ import com.google.android.material.search.SearchBar
 import com.google.android.material.search.SearchView
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputLayout
+import java.util.Calendar
 
 class PagarCuotaActivity : AppCompatActivity() {
     private lateinit var db: DBClub
     private lateinit var adapterPagarCuota: PagarCuotaAdapter
     private val listaUsuariosCompleta = mutableListOf<UsuarioActivo>()
+    private lateinit var fecha: String
+    private var tipoSocio: String = ""
+    private var idMiembro: Int? = null // USAR ESTE ID PARA GUARDAR LAS CUOTAS!!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +44,7 @@ class PagarCuotaActivity : AppCompatActivity() {
         val tilActividades = findViewById<TextInputLayout>(R.id.til_actividades)
         val etActividades = findViewById<MaterialAutoCompleteTextView>(R.id.et_actividades)
         val etFormaDePago = findViewById<MaterialAutoCompleteTextView>(R.id.et_forma_de_pago)
+        val etFecha = findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.et_fechaDePago)
         // Searchbar Usuarios Activos
         val searchBar = findViewById<SearchBar>(R.id.sb_usuarios)
         val searchView = findViewById<SearchView>(R.id.sv_usuarios)
@@ -57,8 +65,19 @@ class PagarCuotaActivity : AppCompatActivity() {
 
         // adaptador searchbar
         adapterPagarCuota = PagarCuotaAdapter(listaMiembros.toMutableList()) { seleccionado ->
-            // Mostrar nombre, DNI y tipo en la SearchBar (opcional)
-            searchBar.setText("${seleccionado.nombre} (${seleccionado.tipo}) - DNI: ${seleccionado.dni}")
+            // Mostrar nombre, DNI y tipo en la SearchBar
+            searchBar.setText("${seleccionado.nombre}")
+            // GUARDO EL ID DEL USUARIO SELECCIONADO PARA LAS CONSULTAS A LA BD
+            idMiembro = seleccionado.idSocio ?: seleccionado.idNoSocio
+            // guardo tipo de socio para esconder/mostrar actividades
+            tipoSocio = seleccionado.tipo
+            // MOSTRAR / ESCONDER ACTIVIDADES
+            if (seleccionado.idSocio != null) {
+                tilActividades.visibility = View.GONE
+            } else {
+                tilActividades.visibility = View.VISIBLE
+            }
+
             searchView.hide()
         }
 
@@ -94,6 +113,23 @@ class PagarCuotaActivity : AppCompatActivity() {
         val actividades = db.obtenerActividades()
         val adapterActividades = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, actividades)
         etActividades.setAdapter(adapterActividades)
+
+
+        // DatePicker
+        etFecha.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val datePicker = DatePickerDialog(
+                this,
+                { _, year, month, dayOfMonth ->
+                    val fecha = "$dayOfMonth/${month + 1}/$year"
+                    etFecha.setText(fecha)
+                },
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
+            )
+            datePicker.show()
+        }
 
         // Cierra la pantalla
         flechaVolver.setOnClickListener {

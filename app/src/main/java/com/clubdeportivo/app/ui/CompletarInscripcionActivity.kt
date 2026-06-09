@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.Button
 import android.widget.RadioGroup
 import android.app.DatePickerDialog
+import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
 import java.util.Calendar
@@ -45,10 +46,10 @@ class CompletarInscripcionActivity : AppCompatActivity() {
         val direccion = intent.getStringExtra("direccion") ?: ""
         val email = intent.getStringExtra("email") ?: ""
 
-        // Formas de pago desde enum
+        // Cargar Formas de pago desde enum (para el selector)
         val formaDePago = FormaDePago.entries.map { it.texto }
 
-        // Cargar actividades desde DB
+        // Cargar actividades desde DB (para el selector)
         val actividades = db.obtenerActividades()
         val adapterActividades = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, actividades)
         etActividades.setAdapter(adapterActividades)
@@ -157,7 +158,18 @@ class CompletarInscripcionActivity : AppCompatActivity() {
                     )
                     if (idCuotaMensual != -1L) {
                         Toast.makeText(this, "Socio registrado", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this, MenuActivity::class.java))
+                        // Datos enviados para el comprobante
+                        val intent = Intent(this, ComprobanteActivity::class.java).apply{
+                            putExtra("nombre", nombre)
+                            putExtra("apellido", apellido)
+                            putExtra("dni", dni)
+                            putExtra("idSocio", idSocio.toString())
+                            putExtra("vencimiento", fechaVencimiento)
+                            putExtra("formaDePago", formaPagoText)
+                            putExtra("monto", monto)
+                        }
+
+                        startActivity(intent)
                         finish()
                     } else {
                         Toast.makeText(this, "Error al registrar cuota mensual", Toast.LENGTH_SHORT).show()
@@ -195,7 +207,17 @@ class CompletarInscripcionActivity : AppCompatActivity() {
                     )
                     if (idCuota != -1L) {
                         Toast.makeText(this, "No Socio registrado", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this, MenuActivity::class.java))
+                        val intent = Intent(this, ComprobanteActivity::class.java).apply{
+                            putExtra("nombre", nombre)
+                            putExtra("apellido", apellido)
+                            putExtra("dni", dni)
+                            putExtra("idNoSocio", idNoSocio.toString())
+                            putExtra("formaDePago", formaPagoText)
+                            putExtra("monto", monto)
+                            putExtra("actividad", actividad)
+                            putExtra("fecha", fecha)
+                        }
+                        startActivity(intent)
                         finish()
                     } else {
                         Toast.makeText(this, "Error al registrar cuota diaria", Toast.LENGTH_SHORT).show()
