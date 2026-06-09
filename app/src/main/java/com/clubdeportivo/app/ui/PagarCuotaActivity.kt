@@ -121,7 +121,7 @@ class PagarCuotaActivity : AppCompatActivity() {
             val datePicker = DatePickerDialog(
                 this,
                 { _, year, month, dayOfMonth ->
-                    val fecha = "$dayOfMonth/${month + 1}/$year"
+                    fecha = "$dayOfMonth/${month + 1}/$year"
                     etFecha.setText(fecha)
                 },
                 calendar.get(Calendar.YEAR),
