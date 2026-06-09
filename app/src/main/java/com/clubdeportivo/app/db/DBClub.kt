@@ -244,16 +244,28 @@ class DBClub (context: Context) : SQLiteOpenHelper(context, "ClubDeportivo.db", 
         return id
     }
 
-    // Lista todos los socios y no socios, junto con documento y tipo de membresía
+    // Lista todos los socios y no socios, junto con documento, tipo de membresía, id
     // Para el searchbar de Pagar Cuota
     fun obtenerTodosLosMiembros(): List<UsuarioActivo> {
         val db = readableDatabase
         val query = """
-        SELECT persona.nombre || ' ' || persona.apellido AS nombre_completo, persona.dni, 'Socio' AS tipo
+        SELECT 
+            persona.nombre || ' ' || persona.apellido AS nombre_completo, 
+            persona.dni, 
+            'Socio' AS tipo,
+            socio.idSocio AS idSocio,
+            NULL AS idNoSocio
         FROM socio 
         INNER JOIN persona ON socio.idPersona = persona.idPersona
-        UNION
-        SELECT persona.nombre || ' ' || persona.apellido AS nombre_completo, persona.dni, 'No Socio' AS tipo
+        
+        UNION ALL
+        
+        SELECT 
+            persona.nombre || ' ' || persona.apellido AS nombre_completo, 
+            persona.dni, 
+            'No Socio' AS tipo,
+            NULL AS idSocio,
+            nosocio.idNoSocio AS idNoSocio
         FROM nosocio 
         INNER JOIN persona ON nosocio.idPersona = persona.idPersona
     """
@@ -263,7 +275,9 @@ class DBClub (context: Context) : SQLiteOpenHelper(context, "ClubDeportivo.db", 
             val nombre = cursor.getString(0)
             val dni = cursor.getString(1)
             val tipo = cursor.getString(2)
-            lista.add(UsuarioActivo(nombre, dni, tipo))
+            val idSocio = if (cursor.isNull(3)) null else cursor.getInt(3)
+            val idNoSocio = if (cursor.isNull(4)) null else cursor.getInt(4)
+            lista.add(UsuarioActivo(nombre, dni, tipo, idSocio, idNoSocio))
         }
         cursor.close()
         db.close()

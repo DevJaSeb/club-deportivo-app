@@ -2,7 +2,6 @@ package com.clubdeportivo.app.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
@@ -41,23 +40,28 @@ class ComprobanteActivity : AppCompatActivity() {
         val actividadContenedor = findViewById<LinearLayout>(R.id.actividad_contenedor)
         val tvFecha = findViewById<TextView>(R.id.tv_fecha)
 
-        // Si es No Socio, aparecen las actividades y tvs correspondientes
+        // Reemplazamos la información
+        tvNombreApellido.text = "${apellido}, ${nombre}"
+        tvMonto.text = "$" + monto
+        tvFormaPago.text = formaPago
+
+        // Si es No Socio, aparecen las actividades y tvs correspondientes, mostrar botón ver carnet o finalizar
         if (idNoSocio != "") {
+            btnVerCarnet.visibility = View.GONE
+            btnFinalizar.visibility = View.VISIBLE
             actividadContenedor.visibility = View.VISIBLE
             tvActividad.text = actividad
             tvId.text = idNoSocio.padStart(3, '0')// asi se ve 001, 002, etc
             tvTipoSocio.text = "Nº de No-Socio"
             tvFecha.text = "Fecha válida"
             tvVencimiento.text = fecha
+
         } else {
+            btnVerCarnet.visibility = View.VISIBLE
+            btnFinalizar.visibility = View.GONE
             tvId.text = idSocio.padStart(3, '0') // asi se ve 001, 002, etc
             tvVencimiento.text = vencimiento
         }
-
-        // Reemplazamos la información
-        tvNombreApellido.text = "${apellido}, ${nombre}"
-        tvMonto.text = "$" + monto + "0"
-        tvFormaPago.text = formaPago
 
 
         // Vuelve al Menú
@@ -66,7 +70,7 @@ class ComprobanteActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Ir a Carnet
+        // Ir a Carnet - SOCIO
        btnVerCarnet.setOnClickListener {
             val intent = Intent(this, CarnetActivity::class.java).apply{
                 putExtra("nombre", nombre)
@@ -78,5 +82,14 @@ class ComprobanteActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        // Finalizar: ir al menú - NO SOCIO
+        btnFinalizar.setOnClickListener {
+            val intent = Intent(this, MenuActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
+
+
 }
