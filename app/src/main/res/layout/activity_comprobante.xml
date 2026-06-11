@@ -20,6 +20,14 @@
             android:layout_marginBottom="20dp"
             android:layout_marginTop="50dp"
             android:contentDescription="@string/icn_exito"/>
+    <!--    Contenedor comprobante  -->
+    <LinearLayout
+        android:id="@+id/contenedor_pdf_comprobante"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:background="#FFFFFF">
 
         <!--    Mensaje de éxito  -->
         <TextView
@@ -215,6 +223,7 @@
                 android:text="Elongación" />
 
         </LinearLayout>
+    </LinearLayout>
 
         <!--    Botón Imprimir Comprobante  -->
         <com.google.android.material.button.MaterialButton
