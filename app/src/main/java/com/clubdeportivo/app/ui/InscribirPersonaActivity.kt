@@ -46,84 +46,119 @@ class InscribirPersonaActivity : AppCompatActivity() {
         }
 
         btnContinuar.setOnClickListener {
-            val nombre = etNombre.text.toString().trim()
-            val apellido = etApellido.text.toString().trim()
-            val dni = etDni.text.toString().trim()
-            val telefono = etTelefono.text.toString().trim()
+
+            val nombreCrudo = etNombre.text.toString().trim()
+            val apellidoCrudo = etApellido.text.toString().trim()
+            val dniCrudo = etDni.text.toString().trim()
+            val telefonoCrudo = etTelefono.text.toString().trim()
             val direccion = etDireccion.text.toString().trim()
             val email = etEmail.text.toString().trim()
 
+            // Capitalización: Primera letra en mayúscula para estandarizar la Base de Datos
+            val nombre = nombreCrudo.split(" ").joinToString(" ") { palabra ->
+                if (palabra.isNotEmpty()) palabra.replaceFirstChar { it.uppercase() } else ""
+            }
+            val apellido = apellidoCrudo.split(" ").joinToString(" ") { palabra ->
+                if (palabra.isNotEmpty()) palabra.replaceFirstChar { it.uppercase() } else ""
+            }
+
+            // Expresiones regulares para nombres, dni y telefono
+            val regexLetras = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$".toRegex()
+            val regexDni = "^[0-9]{7,8}$".toRegex()
+            val regexTelefono = "^[0-9]{8,15}$".toRegex()
+
             var valido = true
 
+            // --- VALIDACIÓN NOMBRE ---
             if (nombre.isEmpty()){
                 tilNombre.error = "El nombre es obligatorio"
                 valido = false
-            } else{
+            } else if (!regexLetras.matches(nombre)) {
+                tilNombre.error = "Solo se permiten letras"
+                valido = false
+            } else if (nombre.split(" ").size > 3) {
+                tilNombre.error = "Se permiten hasta 3 nombres"
+                valido = false
+            } else {
                 tilNombre.error = null
             }
 
+            // --- VALIDACIÓN APELLIDO ---
             if (apellido.isEmpty()){
                 tilApellido.error = "El apellido es obligatorio"
                 valido = false
-            } else{
+            } else if (!regexLetras.matches(apellido)) {
+                tilApellido.error = "Solo se permiten letras"
+                valido = false
+            } else if (apellido.split(" ").size > 3) {
+                tilApellido.error = "Se permiten hasta 3 apellidos"
+                valido = false
+            } else {
                 tilApellido.error = null
             }
 
-            if (dni.isEmpty()){
+            // --- VALIDACIÓN DNI ---
+            if (dniCrudo.isEmpty()){
                 tilDni.error = "El DNI es obligatorio"
                 valido = false
-            } else if (dni.length!=8){
-                tilDni.error = "El DNI debe tener 8 dígitos"
+            } else if (!regexDni.matches(dniCrudo)){
+                tilDni.error = "Debe tener 7 u 8 números (sin puntos)"
                 valido = false
-            } else{
-                if (db.existePersonaPorDni(dni)) {
-                    Toast.makeText(this, "Persona ya registrada.", Toast.LENGTH_SHORT).show()
+            } else {
+                if (db.existePersonaPorDni(dniCrudo)) {
+                    tilDni.error = "Esta persona ya está registrada"
                     valido = false
+                } else {
+                    tilDni.error = null
                 }
-                tilDni.error = null
             }
 
-            if (telefono.isEmpty()){
+            // --- VALIDACIÓN TELÉFONO ---
+            if (telefonoCrudo.isEmpty()){
                 tilTelefono.error = "El teléfono es obligatorio"
                 valido = false
-            } else if (telefono.length <8){
-                tilTelefono.error = "Ingresá un número válido (mínimo 8 dígitos)"
+            } else if (!regexTelefono.matches(telefonoCrudo)){
+                tilTelefono.error = "Ingresá un número válido (solo números, mín. 8 dígitos)"
                 valido = false
-            } else{
+            } else {
                 tilTelefono.error = null
             }
 
+            // --- VALIDACIÓN DIRECCIÓN ---
             if (direccion.isEmpty()){
-                tilDireccion.error = "La dirección es obligatorio"
+                tilDireccion.error = "La dirección es obligatoria"
                 valido = false
-            } else{
+            } else {
                 tilDireccion.error = null
             }
 
+            // --- VALIDACIÓN EMAIL ---
             if (email.isEmpty()){
                 tilEmail.error = "El e-mail es obligatorio"
                 valido = false
             } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
                 tilEmail.error = "Ingresá un e-mail válido"
                 valido = false
-            } else{
+            } else {
                 tilEmail.error = null
             }
 
+            // --- VALIDACIÓN APTO MÉDICO ---
             if (!cbAptoMedico.isChecked){
                 cbAptoMedico.error = "Debés tener el apto médico"
                 valido = false
-            } else{
+            } else {
                 cbAptoMedico.error = null
             }
 
             if (!valido) return@setOnClickListener
 
+            // Enviamos los datos LIMPIOS y CAPITALIZADOS a la siguiente pantalla
             val intent = Intent(this, CompletarInscripcionActivity::class.java).apply{
                 putExtra("nombre", nombre)
                 putExtra("apellido", apellido)
-                putExtra("dni", dni)
-                putExtra("telefono", telefono)
+                putExtra("dni", dniCrudo)
+                putExtra("telefono", telefonoCrudo)
                 putExtra("direccion", direccion)
                 putExtra("email", email)
             }
