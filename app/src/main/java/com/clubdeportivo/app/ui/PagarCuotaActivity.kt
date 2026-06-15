@@ -256,6 +256,14 @@ class PagarCuotaActivity : AppCompatActivity() {
             }
 
             val idNoSocio = idMiembroSeleccionado.toLong()
+            if (db.existeCuotaDiariaEnFecha(idNoSocio, idActividad, fecha)){
+                Toast.makeText(
+                    this,
+                    "Este no-socio ya pagó $actividad el $fecha.",
+                    Toast.LENGTH_LONG
+                ).show()
+                return
+            }
             val idCuota = db.insertarCuotaDiaria(
                 idNoSocio = idNoSocio,
                 idActividad = idActividad,

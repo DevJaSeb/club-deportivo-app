@@ -388,4 +388,16 @@ class DBClub (context: Context) : SQLiteOpenHelper(context, "ClubDeportivo.db", 
         db.close()
         return fecha
     }
+
+    fun existeCuotaDiariaEnFecha(idNoSocio: Long, idActividad: Long, fechaPago: String): Boolean{
+        val db = readableDatabase
+        val cursor = db.rawQuery(
+            "SELECT 1 FROM cuotadiaria WHERE idNoSocio = ? AND idActividad = ? AND fechaPago = ? LIMIT 1",
+            arrayOf(idNoSocio.toString(), idActividad.toString(), fechaPago)
+        )
+        val existe = cursor.count > 0
+        cursor.close()
+        db.close()
+        return existe
+    }
 }
