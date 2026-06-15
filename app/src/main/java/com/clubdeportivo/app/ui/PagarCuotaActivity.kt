@@ -24,6 +24,8 @@ import com.google.android.material.search.SearchView
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputLayout
 import java.util.Calendar
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class PagarCuotaActivity : AppCompatActivity() {
     private lateinit var db: DBClub
@@ -45,6 +47,7 @@ class PagarCuotaActivity : AppCompatActivity() {
         val etActividades = findViewById<MaterialAutoCompleteTextView>(R.id.et_actividades)
         val etFormaDePago = findViewById<MaterialAutoCompleteTextView>(R.id.et_forma_de_pago)
         val etFecha = findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.et_fechaDePago)
+        val etMonto = findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.et_monto)
         // Searchbar Usuarios Activos
         val searchBar = findViewById<SearchBar>(R.id.sb_usuarios)
         val searchView = findViewById<SearchView>(R.id.sv_usuarios)
@@ -136,10 +139,14 @@ class PagarCuotaActivity : AppCompatActivity() {
             finish()
         }
 
-        // Redireccionar desde pagar cuota a comprobante
+        // Registrar pago: valida los datos, guarda la cuota en la BD y va al comprobante
         btnRegistrarPago.setOnClickListener {
-            val intent = Intent(this, ComprobanteActivity::class.java)
-            startActivity(intent)
+            registrarPago(
+                etMonto = etMonto,
+                etFormaDePago = etFormaDePago,
+                etActividades = etActividades
+            )
+
         }
 
         // Menú vertical de Forma de pago
@@ -150,5 +157,142 @@ class PagarCuotaActivity : AppCompatActivity() {
         )
 
         etFormaDePago.setAdapter(adapterFormaDePago)
+    }
+
+
+    // Valida los datos del formulario, guarda el pago en la BD (cuota mensual o diaria)
+    // y redirige al comprobante con los datos correspondientes
+    private fun registrarPago(
+        etMonto: com.google.android.material.textfield.TextInputEditText,
+        etFormaDePago: MaterialAutoCompleteTextView,
+        etActividades: MaterialAutoCompleteTextView
+    ) {
+        // Validaciones generales
+        val idMiembroSeleccionado = idMiembro
+        if (idMiembroSeleccionado == null) {
+            Toast.makeText(this, "Selecciona un socio o no socio", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (!::fecha.isInitialized || fecha.isEmpty()) {
+            Toast.makeText(this, "Selecciona una fecha de pago", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val monto = etMonto.text.toString().toDoubleOrNull()
+        if (monto == null) {
+            Toast.makeText(this, "Ingresa un monto válido (ej: 1500.50)", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val formaPagoTexto = etFormaDePago.text.toString()
+        if (formaPagoTexto.isEmpty()) {
+            Toast.makeText(this, "Selecciona una forma de pago", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        // Datos de la persona (nombre, apellido y dni) para el comprobante
+        val datosPersona = db.obtenerDatosPersona(idMiembroSeleccionado, tipoSocio == "Socio")
+        if (datosPersona == null) {
+            Toast.makeText(this, "No se encontraron los datos del miembro", Toast.LENGTH_SHORT).show()
+            return
+        }
+        val (nombre, apellido, dni) = datosPersona
+
+        if (tipoSocio == "Socio") {
+            val idSocio = idMiembroSeleccionado.toLong()
+            val vencimientoActual = db.obtenerVencimientoActualSocio(idSocio)
+            if (vencimientoActual != null){
+                val formato = SimpleDateFormat("d/M/yyyy", Locale.getDefault())
+                val fechaPagoDate = formato.parse(fecha)
+                val fechaVencDate = formato.parse(vencimientoActual)
+                if (fechaPagoDate != null && fechaVencDate != null && !fechaPagoDate.after(fechaVencDate)){
+                    Toast.makeText(
+                        this,
+                        "Cuota vigente hasta $vencimientoActual. La fecha de pago debe ser posterior.",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    return
+                }
+            }
+            val nuevoVencimiento = calcularFechaVencimiento(fecha)
+
+            val idCuota = db.insertarCuotaMensual(
+                idSocio = idSocio,
+                monto = monto,
+                fechaPago = fecha,
+                fechaVencimiento = nuevoVencimiento,
+                formaPago = formaPagoTexto
+            )
+            if (idCuota == -1L) {
+                Toast.makeText(this, "Error al registrar el pago", Toast.LENGTH_SHORT).show()
+                return
+            }
+            // Actualiza el vencimiento del socio con el nuevo período pagado
+            db.actualizarVencimientoSocio(idSocio, nuevoVencimiento)
+
+            val intent = Intent(this, ComprobanteActivity::class.java).apply {
+                putExtra("nombre", nombre)
+                putExtra("apellido", apellido)
+                putExtra("dni", dni)
+                putExtra("idSocio", idSocio.toString())
+                putExtra("vencimiento", nuevoVencimiento)
+                putExtra("formaDePago", formaPagoTexto)
+                putExtra("monto", monto)
+            }
+            startActivity(intent)
+            finish()
+        } else {
+            // No Socio: requiere actividad seleccionada
+            val actividad = etActividades.text.toString()
+            if (actividad.isEmpty()) {
+                Toast.makeText(this, "Selecciona una actividad", Toast.LENGTH_SHORT).show()
+                return
+            }
+            val idActividad = db.obtenerIdActividadPorNombre(actividad)
+            if (idActividad == null) {
+                Toast.makeText(this, "Actividad no válida", Toast.LENGTH_SHORT).show()
+                return
+            }
+
+            val idNoSocio = idMiembroSeleccionado.toLong()
+            val idCuota = db.insertarCuotaDiaria(
+                idNoSocio = idNoSocio,
+                idActividad = idActividad,
+                monto = monto,
+                fechaPago = fecha,
+                formaPago = formaPagoTexto
+            )
+            if (idCuota == -1L) {
+                Toast.makeText(this, "Error al registrar el pago", Toast.LENGTH_SHORT).show()
+                return
+            }
+
+            val intent = Intent(this, ComprobanteActivity::class.java).apply {
+                putExtra("nombre", nombre)
+                putExtra("apellido", apellido)
+                putExtra("dni", dni)
+                putExtra("idNoSocio", idNoSocio.toString())
+                putExtra("formaDePago", formaPagoTexto)
+                putExtra("monto", monto)
+                putExtra("actividad", actividad)
+                putExtra("fecha", fecha)
+            }
+            startActivity(intent)
+            finish()
+        }
+    }
+
+    // Calcula la nueva fecha de vencimiento (1 mes después de la fecha de pago)
+    private fun calcularFechaVencimiento(fechaPago: String): String {
+        val partes = fechaPago.split("/")
+        val dia = partes[0].toInt()
+        val mes = partes[1].toInt()
+        val anio = partes[2].toInt()
+        val calendar = Calendar.getInstance().apply {
+            set(anio, mes - 1, dia)
+            add(Calendar.MONTH, 1)
+        }
+        return "${calendar.get(Calendar.DAY_OF_MONTH)}/${calendar.get(Calendar.MONTH) + 1}/${calendar.get(Calendar.YEAR)}"
     }
 }
