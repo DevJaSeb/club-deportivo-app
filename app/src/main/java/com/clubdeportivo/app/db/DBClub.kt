@@ -25,7 +25,8 @@ class DBClub (context: Context) : SQLiteOpenHelper(context, "ClubDeportivo.db", 
         db?.execSQL("INSERT INTO usuario (usuario, clave) VALUES ('admin', 'admin123')")
 
         // Cargar Actividades para el selector de actividades
-        val actividadesIniciales = listOf("Natación", "Elongación", "Musculación", "Artes Marciales", "Tenis", "Yoga")
+        val actividadesIniciales =
+            listOf("Natación", "Elongación", "Musculación", "Artes Marciales", "Tenis", "Yoga")
         for (act in actividadesIniciales) {
             db?.execSQL("INSERT INTO actividad (nombreActividad) VALUES ('$act')")
         }
@@ -98,7 +99,8 @@ class DBClub (context: Context) : SQLiteOpenHelper(context, "ClubDeportivo.db", 
     // Cargar actividades al selector
     fun obtenerActividades(): List<String> {
         val db = readableDatabase
-        val cursor = db.rawQuery("SELECT nombreActividad FROM actividad ORDER BY nombreActividad", null)
+        val cursor =
+            db.rawQuery("SELECT nombreActividad FROM actividad ORDER BY nombreActividad", null)
         val lista = mutableListOf<String>()
         while (cursor.moveToNext()) {
             lista.add(cursor.getString(0))
@@ -110,7 +112,10 @@ class DBClub (context: Context) : SQLiteOpenHelper(context, "ClubDeportivo.db", 
 
     fun obtenerIdActividadPorNombre(nombre: String): Long? {
         val db = readableDatabase
-        val cursor = db.rawQuery("SELECT idActividad FROM actividad WHERE nombreActividad = ?", arrayOf(nombre))
+        val cursor = db.rawQuery(
+            "SELECT idActividad FROM actividad WHERE nombreActividad = ?",
+            arrayOf(nombre)
+        )
         val id = if (cursor.moveToFirst()) cursor.getLong(0) else null
         cursor.close()
         db.close()
@@ -288,7 +293,8 @@ class DBClub (context: Context) : SQLiteOpenHelper(context, "ClubDeportivo.db", 
         val db = this.readableDatabase
         val lista = mutableListOf<Vencimiento>()
 
-        val sql = "SELECT s.idSocio, s.fechaVencimiento, p.apellido, p.nombre FROM socio s INNER JOIN persona p ON s.idPersona = p.idPersona"
+        val sql =
+            "SELECT s.idSocio, s.fechaVencimiento, p.apellido, p.nombre FROM socio s INNER JOIN persona p ON s.idPersona = p.idPersona"
         val cursor = db.rawQuery(sql, null)
 
         val formato = SimpleDateFormat("d/M/yyyy", Locale.getDefault())
@@ -326,7 +332,8 @@ class DBClub (context: Context) : SQLiteOpenHelper(context, "ClubDeportivo.db", 
                             lista.add(Vencimiento(nombreCompleto, idFormateado, fechaVencStr))
                         }
                     }
-                } catch (e: Exception) { }
+                } catch (e: Exception) {
+                }
 
             } while (cursor.moveToNext())
         }
@@ -335,5 +342,62 @@ class DBClub (context: Context) : SQLiteOpenHelper(context, "ClubDeportivo.db", 
         db.close()
 
         return lista
+    }
+
+
+    // Obtiene nombre, apellido y dni de un Socio o No Socio a partir de su id
+    // Usado en Pagar Cuota para armar el comprobante
+    fun obtenerDatosPersona(id: Int, esSocio: Boolean): Triple<String, String, String>? {
+        val db = readableDatabase
+        val query = if (esSocio) {
+            "SELECT p.nombre, p.apellido, p.dni FROM persona p " +
+                    "INNER JOIN socio s ON s.idPersona = p.idPersona WHERE s.idSocio = ?"
+        } else {
+            "SELECT p.nombre, p.apellido, p.dni FROM persona p " +
+                    "INNER JOIN nosocio n ON n.idPersona = p.idPersona WHERE n.idNoSocio = ?"
+        }
+        val cursor = db.rawQuery(query, arrayOf(id.toString()))
+        val datos = if (cursor.moveToFirst()) {
+            Triple(cursor.getString(0), cursor.getString(1), cursor.getString(2))
+        } else null
+        cursor.close()
+        db.close()
+        return datos
+    }
+
+    // Actualiza la fecha de vencimiento del Socio luego de registrar el pago de la cuota mensual
+    fun actualizarVencimientoSocio(idSocio: Long, nuevaFechaVencimiento: String): Int {
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put("fechaVencimiento", nuevaFechaVencimiento)
+        }
+        val filasActualizadas =
+            db.update("socio", values, "idSocio = ?", arrayOf(idSocio.toString()))
+        db.close()
+        return filasActualizadas
+    }
+
+    fun obtenerVencimientoActualSocio(idSocio: Long): String? {
+        val db = readableDatabase
+        val cursor = db.rawQuery(
+            "SELECT fechaVencimiento FROM socio WHERE idSocio =?",
+            arrayOf(idSocio.toString())
+        )
+        val fecha = if (cursor.moveToFirst()) cursor.getString(0) else null
+        cursor.close()
+        db.close()
+        return fecha
+    }
+
+    fun existeCuotaDiariaEnFecha(idNoSocio: Long, idActividad: Long, fechaPago: String): Boolean{
+        val db = readableDatabase
+        val cursor = db.rawQuery(
+            "SELECT 1 FROM cuotadiaria WHERE idNoSocio = ? AND idActividad = ? AND fechaPago = ? LIMIT 1",
+            arrayOf(idNoSocio.toString(), idActividad.toString(), fechaPago)
+        )
+        val existe = cursor.count > 0
+        cursor.close()
+        db.close()
+        return existe
     }
 }
